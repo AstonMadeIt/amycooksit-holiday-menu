@@ -356,12 +356,191 @@ h1 {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 640px) {
-  .intro-grid {
-    grid-template-columns: 1fr;
+  body {
+    padding: 12px;
+  }
+
+  .container {
+    border-radius: 16px;
+  }
+
+  .header {
+    padding: 20px 16px;
+  }
+
+  .brand {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .logo {
+    width: 64px;
+    height: 64px;
+    border-width: 2px;
+  }
+
+  h1 {
+    font-size: 24px;
+    letter-spacing: 0.3px;
+  }
+
+  .tagline {
+    font-size: 12px;
+    margin-top: 6px;
+  }
+
+  .cta-bar {
+    padding: 16px;
+    margin-top: 16px;
+    margin-bottom: 10px;
+    border-radius: 12px;
+  }
+
+  .cta-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+    font-size: 13px;
   }
   
+  .cta-divider {
+    display: none;
+  }
+
+  .cta-action {
+    font-size: 15px;
+  }
+
+  .cta-payment {
+    font-size: 12px;
+  }
+
+  .intro {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .intro-item strong {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .intro-item span {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .content {
+    padding: 20px 16px;
+  }
+
+  .section {
+    margin-bottom: 32px;
+  }
+
+  .section-header {
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .section-header h2 {
+    font-size: 22px;
+  }
+
+  .badge {
+    font-size: 10px;
+    padding: 6px 10px;
+    letter-spacing: 0.6px;
+  }
+
   .grid {
     grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  .card-subtitle {
+    font-size: 12px;
+    margin-bottom: 12px;
+    line-height: 1.4;
+  }
+
+  .menu-list li {
+    padding: 12px 0;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  .menu-list strong {
+    font-size: 14px;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .menu-list em {
+    font-size: 12px;
+  }
+
+  .note {
+    margin-top: 14px;
+    padding-top: 14px;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  
+  .brooklyn-skyline {
+    width: clamp(280px, 85vw, 420px);
+    opacity: 0.05;
+    top: 5%;
+    right: -8%;
+  }
+
+  /* Improve touch targets for mobile */
+  .menu-list li {
+    min-height: 44px; /* iOS minimum touch target */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/* Tablet optimization */
+@media (min-width: 641px) and (max-width: 900px) {
+  .container {
+    max-width: 720px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .brooklyn-skyline {
+    width: 500px;
+    opacity: 0.07;
+  }
+}
+
+/* Large screens - enhanced skyline */
+@media (min-width: 1200px) {
+  .brooklyn-skyline {
+    width: 800px;
+    opacity: 0.1;
   }
 }
 </style>
