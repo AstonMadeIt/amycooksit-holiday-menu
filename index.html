@@ -349,6 +349,20 @@ h1 {
   list-style: none;
 }
 
+/* Mains side-by-side layout */
+.mains-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(20px, 4vw, 32px);
+}
+
+@media (max-width: 640px) {
+  .mains-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
 .menu-list li {
   padding: 10px 0;
   border-bottom: 1px solid rgba(199, 164, 73, 0.12);
@@ -688,15 +702,12 @@ h1 {
           <span class="badge gold">Choose 2</span>
         </div>
         
-        <div class="grid">
-          <div class="card">
+        <div class="card">
+          <div class="mains-grid">
             <ul class="menu-list">
               <li><strong>Pernil Mojo</strong> — Slow-roasted pork shoulder</li>
               <li><strong>Peruvian Chicken</strong> — Roasted, served with ají verde</li>
             </ul>
-          </div>
-
-          <div class="card">
             <ul class="menu-list">
               <li><strong>Jerk Salmon</strong> — Citrus-jerk glaze with holiday orange & clove</li>
               <li><strong>Filipino Pineapple Glazed Ham</strong> — Brown sugar & holiday spice</li>
