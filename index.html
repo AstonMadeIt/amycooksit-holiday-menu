@@ -1,9 +1,894 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Amy Cooks It Holiday Menu</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amy Cooks It — Holiday '25 Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream: #FFF9F1;
+  --ink: #151515;
+  --gold: #C7A449;
+  --green: #1F6F54;
+  --cranberry: #7A1F2B;
+  --soft-gold: #E6D6A8;
+  --paper: #FFFEFB;
+  --line: #EADFBE;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: linear-gradient(180deg, #fffaf4 0%, #fff5ea 40%, #f7ebd7 100%);
+  color: var(--ink);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  padding: clamp(16px, 3vw, 32px);
+}
+
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  background: var(--paper);
+  border-radius: 20px;
+  border: 1px solid rgba(199, 164, 73, 0.25);
+  box-shadow: 
+    0 24px 60px rgba(140, 100, 28, 0.15),
+    0 2px 0 rgba(255, 255, 255, 0.6) inset;
+  overflow: visible;
+  position: relative;
+}
+
+/* ===== STICKY HEADER ===== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: 
+    radial-gradient(1200px 480px at 80% -10%, rgba(243, 217, 139, 0.24), transparent 60%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(255, 255, 255, 0.95));
+  border-bottom: 1px solid var(--line);
+  padding: clamp(16px, 3vw, 24px);
+  overflow: hidden;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Animated Gradient Shimmer Background */
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(199, 164, 73, 0.08) 25%,
+    rgba(230, 214, 168, 0.12) 50%,
+    rgba(199, 164, 73, 0.08) 75%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmerGradient 4s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes shimmerGradient {
+  0%, 100% { background-position: 200% 0; }
+  50% { background-position: -100% 0; }
+}
+
+/* Falling Snowflakes */
+.snowflakes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: rgba(199, 164, 73, 0.3);
+  font-size: clamp(8px, 2vw, 12px);
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(calc(100vh + 20px)) rotate(360deg);
+  }
+}
+
+.snowflake:nth-child(1) { left: 10%; animation-duration: 12s; animation-delay: 0s; }
+.snowflake:nth-child(2) { left: 20%; animation-duration: 15s; animation-delay: 2s; font-size: 10px; }
+.snowflake:nth-child(3) { left: 30%; animation-duration: 10s; animation-delay: 4s; }
+.snowflake:nth-child(4) { left: 40%; animation-duration: 14s; animation-delay: 1s; font-size: 14px; }
+.snowflake:nth-child(5) { left: 50%; animation-duration: 11s; animation-delay: 3s; }
+.snowflake:nth-child(6) { left: 60%; animation-duration: 13s; animation-delay: 5s; font-size: 9px; }
+.snowflake:nth-child(7) { left: 70%; animation-duration: 16s; animation-delay: 2s; }
+.snowflake:nth-child(8) { left: 80%; animation-duration: 12s; animation-delay: 4s; font-size: 11px; }
+.snowflake:nth-child(9) { left: 90%; animation-duration: 14s; animation-delay: 1s; }
+.snowflake:nth-child(10) { left: 15%; animation-duration: 15s; animation-delay: 3s; font-size: 13px; }
+
+/* Brand section now layered above skyline */
+.brand {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2.5vw, 16px);
+  margin-bottom: 12px;
+}
+
+.logo {
+  width: clamp(56px, 10vw, 72px);
+  height: clamp(56px, 10vw, 72px);
+  border-radius: 50%;
+  border: 2.5px solid var(--gold);
+  overflow: hidden;
+  box-shadow: 
+    inset 0 0 0 2px rgba(255, 255, 255, 0.75),
+    0 6px 16px rgba(140, 100, 28, 0.18);
+  position: relative;
+  background: white;
+  flex-shrink: 0;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(24px, 4.5vw, 38px);
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  line-height: 1.05;
+  position: relative;
+}
+
+.tagline {
+  color: #525762;
+  font-size: clamp(11px, 2.5vw, 13px);
+  font-weight: 500;
+  margin-top: 6px;
+  position: relative;
+  letter-spacing: 0.2px;
+}
+
+/* Hero Tagline Section */
+.hero-tagline {
+  position: relative;
+  z-index: 2;
+  text-align: right;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  padding-right: clamp(8px, 2vw, 16px);
+}
+
+.hero-tagline .line1 {
+  font-family: "Inter", sans-serif;
+  font-size: clamp(11px, 2.5vw, 14px);
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+  background: linear-gradient(135deg, #C7A449, #8C641C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-tagline .line2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(9px, 2vw, 11px);
+  font-weight: 500;
+  color: #666d79;
+  letter-spacing: 0.8px;
+  font-style: italic;
+}
+
+/* PREMIUM CTA WITH SHIMMER GRADIENT */
+.cta-bar {
+  position: relative;
+  z-index: 2;
+  background: 
+    linear-gradient(135deg, 
+      #1F6F54 0%, 
+      #2A8A6B 50%, 
+      #1F6F54 100%
+    );
+  background-size: 200% 100%;
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px clamp(14px, 3vw, 18px);
+  margin-top: 12px;
+  margin-bottom: 0;
+  box-shadow: 
+    0 4px 16px rgba(31, 111, 84, 0.3),
+    0 1px 0 rgba(255, 255, 255, 0.15) inset;
+  animation: shimmer 3s ease-in-out infinite;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.cta-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 500;
+}
+
+.cta-text {
+  opacity: 0.92;
+  font-size: 11px;
+  letter-spacing: 0.2px;
+}
+
+.cta-divider {
+  opacity: 0.4;
+  font-weight: 300;
+  font-size: 10px;
+}
+
+.cta-action {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cta-action strong {
+  background: linear-gradient(135deg, #FFF9F1, #E6D6A8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+}
+
+.cta-payment {
+  opacity: 0.85;
+  font-size: 10px;
+  letter-spacing: 0.2px;
+}
+
+.intro {
+  position: relative;
+  z-index: 2;
+  background: 
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.82));
+  border: 1px solid rgba(199, 155, 50, 0.25);
+  border-radius: 14px;
+  padding: clamp(16px, 3vw, 20px);
+  box-shadow: 0 12px 24px rgba(17, 17, 22, 0.08);
+}
+
+@media (max-width: 640px) {
+  .cta-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 6px;
+  }
+  
+  .cta-divider {
+    display: none;
+  }
+
+  .hero-tagline {
+    text-align: center;
+    padding-right: 0;
+    margin-top: 6px;
+  }
+
+  .hero-tagline .line1 {
+    font-size: 10px;
+  }
+
+  .hero-tagline .line2 {
+    font-size: 8px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .hero-tagline .line1 {
+    font-size: 15px;
+  }
+
+  .hero-tagline .line2 {
+    font-size: 12px;
+  }
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.intro-item strong {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+
+.intro-item span {
+  color: #666d79;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* ===== CONTENT ===== */
+.content {
+  padding: clamp(20px, 4vw, 36px);
+}
+
+.section {
+  margin-bottom: clamp(24px, 5vw, 40px);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.section-header h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(22px, 4.5vw, 28px);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.badge.gold { background: linear-gradient(135deg, #E6D6A8, #C7A449); color: #1f1a10; }
+.badge.green { background: var(--green); }
+.badge.cranberry { background: var(--cranberry); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(14px, 3vw, 18px);
+}
+
+.card {
+  background: 
+    linear-gradient(180deg, #ffffff, #faf5e9);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(16px, 3.5vw, 20px);
+  box-shadow: 
+    0 1px 0 #fff inset,
+    0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.card h3 {
+  font-size: clamp(16px, 3.8vw, 19px);
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--ink);
+  letter-spacing: 0.2px;
+}
+
+.card-subtitle {
+  font-size: 13px;
+  color: #666d79;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.menu-list {
+  list-style: none;
+}
+
+.menu-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(199, 164, 73, 0.12);
+  font-size: clamp(14px, 3.2vw, 15.5px);
+  line-height: 1.5;
+}
+
+.menu-list li:last-child {
+  border-bottom: none;
+}
+
+.menu-list strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.menu-list em {
+  color: #666d79;
+  font-style: normal;
+  font-size: 13px;
+}
+
+.note {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: #4a4a4a;
+  line-height: 1.5;
+}
+
+/* Single wide card for Cocktail Bites */
+.wide-card {
+  grid-column: 1 / -1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.wide-card h3 {
+  text-align: center;
+  font-size: clamp(17px, 4vw, 20px);
+  margin-bottom: 14px;
+}
+
+/* Ordering Notes Compact Styling */
+.ordering-notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(12px, 2.5vw, 16px);
+}
+
+.compact-card h3 {
+  font-size: 15px;
+  margin-bottom: 10px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.compact-list li {
+  padding: 8px 0;
+  font-size: 12px;
+  line-height: 1.5;
+  border-bottom: 1px solid rgba(199, 164, 73, 0.1);
+}
+
+.compact-list li:last-child {
+  border-bottom: none;
+}
+
+.compact-list strong {
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+  body {
+    padding: 10px;
+  }
+
+  .container {
+    border-radius: 16px;
+  }
+
+  .header {
+    padding: 14px 12px;
+  }
+
+  .brand {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .logo {
+    width: 52px;
+    height: 52px;
+    border-width: 2px;
+  }
+
+  h1 {
+    font-size: 22px;
+    letter-spacing: 0.2px;
+    line-height: 1.05;
+  }
+
+  .tagline {
+    font-size: 10px;
+    margin-top: 4px;
+    letter-spacing: 0.15px;
+  }
+
+  .cta-bar {
+    padding: 10px 12px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    border-radius: 10px;
+  }
+
+  .cta-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 5px;
+    font-size: 11px;
+  }
+  
+  .cta-divider {
+    display: none;
+  }
+
+  .cta-text {
+    font-size: 10px;
+  }
+
+  .cta-action {
+    font-size: 13px;
+  }
+
+  .cta-action strong {
+    font-size: 13px;
+  }
+
+  .cta-payment {
+    font-size: 9px;
+  }
+
+  .intro {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .intro-item strong {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  .intro-item span {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .content {
+    padding: 16px 12px;
+  }
+
+  .section {
+    margin-bottom: 28px;
+  }
+
+  .section-header {
+    gap: 8px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+
+  .section-header h2 {
+    font-size: 20px;
+  }
+
+  .badge {
+    font-size: 9px;
+    padding: 5px 9px;
+    letter-spacing: 0.5px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .card {
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .card h3 {
+    font-size: 15px;
+    margin-bottom: 9px;
+  }
+
+  .card-subtitle {
+    font-size: 11px;
+    margin-bottom: 10px;
+    line-height: 1.4;
+  }
+
+  .menu-list li {
+    padding: 11px 0;
+    font-size: 13px;
+    line-height: 1.6;
+  }
+
+  .menu-list strong {
+    font-size: 13px;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .menu-list em {
+    font-size: 11px;
+  }
+
+  .note {
+    margin-top: 12px;
+    padding-top: 12px;
+    font-size: 11px;
+    line-height: 1.6;
+  }
+  
+  .brooklyn-skyline {
+    width: clamp(260px, 82vw, 400px);
+    opacity: 0.05;
+    top: 8%;
+    right: -10%;
+  }
+
+  /* Compact ordering notes on mobile */
+  .ordering-notes-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .compact-card {
+    padding: 12px;
+  }
+
+  .compact-card h3 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .compact-list li {
+    padding: 7px 0;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .compact-list strong {
+    font-size: 10px;
+    letter-spacing: 0.25px;
+  }
+
+  /* Improve touch targets for mobile */
+  .menu-list li {
+    min-height: 44px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+
+/* Tablet optimization */
+@media (min-width: 641px) and (max-width: 900px) {
+  .container {
+    max-width: 720px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .brooklyn-skyline {
+    width: 500px;
+    opacity: 0.07;
+  }
+
+  .ordering-notes-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Large screens - enhanced skyline */
+@media (min-width: 1200px) {
+  .brooklyn-skyline {
+    width: 800px;
+    opacity: 0.1;
+  }
+}
+</style>
 </head>
 <body>
-    <h1>Welcome to Amy's Holiday Menu</h1>
-    <p>Explore our selection of delicious meals.</p>
+  <div class="container">
+    
+    <!-- HEADER -->
+    <header class="header">
+      <!-- Falling Snowflakes -->
+      <div class="snowflakes">
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❄</div>
+        <div class="snowflake">❅</div>
+        <div class="snowflake">❆</div>
+        <div class="snowflake">❄</div>
+      </div>
+
+      <div class="brand">
+        <div class="logo">
+          <img src="AmyCooksItLogo.jpeg" alt="Amy Cooks It Logo">
+        </div>
+        <div>
+          <h1>Holiday '25 Menu</h1>
+          <p class="tagline">Brooklyn & Greater NYC • 24–48h Notice</p>
+        </div>
+      </div>
+
+      <!-- Hero Tagline -->
+      <div class="hero-tagline">
+        <div class="line1">Authentic Latin & American Flavors</div>
+        <div class="line2">From Our Kitchen to Your Table</div>
+      </div>
+
+      <div class="cta-bar">
+        <div class="cta-content">
+          <span class="cta-text">Limited holiday availability</span>
+          <span class="cta-divider">•</span>
+          <span class="cta-action"><strong>Text 347-420-8728</strong></span>
+          <span class="cta-divider">•</span>
+          <span class="cta-payment">Square invoicing</span>
+        </div>
+      </div>
+
+    </header>
+
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- MAINS -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Mains</h2>
+          <span class="badge gold">Choose 2</span>
+        </div>
+        
+        <div class="grid">
+          <div class="card">
+            <ul class="menu-list">
+              <li><strong>Pernil Mojo</strong> — Slow-roasted pork shoulder</li>
+              <li><strong>Peruvian Chicken</strong> — Roasted, served with ají verde</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <ul class="menu-list">
+              <li><strong>Jerk Salmon</strong> — Citrus-jerk glaze with holiday orange & clove</li>
+              <li><strong>Filipino Pineapple Glazed Ham</strong> — Brown sugar & holiday spice</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SIDES -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Sides</h2>
+          <span class="badge cranberry">Choose 3</span>
+        </div>
+        
+        <div class="grid">
+          <div class="card">
+            <h3>Latin & Caribbean</h3>
+            <ul class="menu-list">
+              <li><strong>Arroz con Gandules</strong> — Puerto Rican rice, pigeon peas, sofrito</li>
+              <li><strong>Mojo Yuca</strong> — Cassava with garlicky citrus drizzle</li>
+              <li><strong>Sweet Plantains</strong> — Caramelized to golden perfection</li>
+              <li><strong>Yuca Fritters</strong> — Crispy outside, fluffy inside, lime aioli</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>American Classics</h3>
+            <ul class="menu-list">
+              <li><strong>Roasted Root Vegetables</strong> — Maple & thyme</li>
+              <li><strong>Mac & Cheese</strong> — Creamy, comfort at its finest</li>
+              <li><strong>Collard Greens</strong> — Southern soul, slow-cooked</li>
+              <li><strong>Cornbread</strong> — Buttery, golden wedges</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOLIDAY COCKTAIL BITES -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Holiday Cocktail Bites</h2>
+          <span class="badge gold">Office & Teen Parties</span>
+        </div>
+        
+        <div class="grid">
+          <div class="card">
+            <h3>Hand-Held Starters</h3>
+            <p class="card-subtitle">Perfect for mixers & teen gatherings</p>
+            <ul class="menu-list">
+              <li><strong>Wings</strong> — Lemon pepper • Garlic • Buffalo</li>
+              <li><strong>Hot Honey Chicken Tenders</strong> — Sweet heat, crowd-pleaser</li>
+              <li><strong>Mini Sliders</strong> — Potato buns, pickles, all-American</li>
+              <li><strong>Italian Subs (mini)</strong> — Salami, sharp provolone, vinegar slaw</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Party Favorites</h3>
+            <p class="card-subtitle">Value-driven spreads</p>
+            <ul class="menu-list">
+              <li><strong>Sausage & Peppers</strong> — Classic, comforting</li>
+              <li><strong>Empanadas</strong> — Chicken, beef or veggie (25 pcs)</li>
+              <li><strong>Alcapurrias</strong> — Puerto Rican fritters, savory ground beef (25 pcs)</li>
+            </ul>
+            <p class="note">These can substitute for bites in the prix fixe or be combined into a standalone party spread.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ORDERING NOTES & EXPERIENCE -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Ordering Notes</h2>
+        </div>
+        
+        <div class="grid ordering-notes-grid">
+          <div class="card compact-card">
+            <h3>The Experience</h3>
+            <ul class="menu-list compact-list">
+              <li><strong>Format:</strong> Choose 2 Mains • 3 Sides • 2 Bites</li>
+              <li><strong>Setup:</strong> Chafing dishes, warmers & house sauces</li>
+              <li><strong>Guest Range:</strong> 12–40 people ideal</li>
+              <li><strong>Perfect For:</strong> Holiday parties, office gatherings, family feasts</li>
+            </ul>
+          </div>
+
+          <div class="card compact-card">
+            <h3>Details</h3>
+            <ul class="menu-list compact-list">
+              <li><strong>Deposit:</strong> 50% non-refundable via Square</li>
+              <li><strong>Includes:</strong> Brooklyn delivery & standard setup</li>
+              <li><strong>Sauces:</strong> Ají Verde • Garlic-Mojo • Cranberry-Citrus</li>
+              <li><strong>Dietary:</strong> GF/veg available on request</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+  </div>
 </body>
 </html>
