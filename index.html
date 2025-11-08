@@ -48,7 +48,7 @@ body {
     radial-gradient(1200px 480px at 80% -10%, rgba(243, 217, 139, 0.24), transparent 60%),
     linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
   border-bottom: 1px solid var(--line);
-  padding: clamp(20px, 4vw, 32px);
+  padding: clamp(16px, 3vw, 24px);
   overflow: hidden;
 }
 
@@ -99,21 +99,22 @@ body {
   z-index: 2;
   display: flex;
   align-items: center;
-  gap: clamp(14px, 3vw, 20px);
-  margin-bottom: 18px;
+  gap: clamp(12px, 2.5vw, 16px);
+  margin-bottom: 12px;
 }
 
 .logo {
-  width: clamp(72px, 12vw, 96px);
-  height: clamp(72px, 12vw, 96px);
+  width: clamp(56px, 10vw, 72px);
+  height: clamp(56px, 10vw, 72px);
   border-radius: 50%;
-  border: 3px solid var(--gold);
+  border: 2.5px solid var(--gold);
   overflow: hidden;
   box-shadow: 
     inset 0 0 0 2px rgba(255, 255, 255, 0.75),
-    0 8px 20px rgba(140, 100, 28, 0.2);
+    0 6px 16px rgba(140, 100, 28, 0.18);
   position: relative;
   background: white;
+  flex-shrink: 0;
 }
 
 .logo img {
@@ -124,31 +125,48 @@ body {
 
 h1 {
   font-family: "Playfair Display", serif;
-  font-size: clamp(28px, 5vw, 44px);
+  font-size: clamp(24px, 4.5vw, 38px);
   font-weight: 800;
-  letter-spacing: 0.5px;
-  line-height: 1.1;
+  letter-spacing: 0.3px;
+  line-height: 1.05;
   position: relative;
 }
 
 .tagline {
   color: #525762;
-  font-size: clamp(13px, 3vw, 15px);
+  font-size: clamp(11px, 2.5vw, 13px);
   font-weight: 500;
-  margin-top: 8px;
+  margin-top: 6px;
   position: relative;
+  letter-spacing: 0.2px;
 }
 
+/* PREMIUM CTA WITH SHIMMER GRADIENT */
 .cta-bar {
   position: relative;
   z-index: 2;
-  background: var(--green);
+  background: 
+    linear-gradient(135deg, 
+      #1F6F54 0%, 
+      #2A8A6B 50%, 
+      #1F6F54 100%
+    );
+  background-size: 200% 100%;
   color: #fff;
-  border-radius: 10px;
-  padding: 14px clamp(18px, 3.5vw, 24px);
-  margin-top: 20px;
-  margin-bottom: 12px;
-  box-shadow: 0 4px 12px rgba(31, 111, 84, 0.25);
+  border-radius: 12px;
+  padding: 12px clamp(14px, 3vw, 18px);
+  margin-top: 12px;
+  margin-bottom: 0;
+  box-shadow: 
+    0 4px 16px rgba(31, 111, 84, 0.3),
+    0 1px 0 rgba(255, 255, 255, 0.15) inset;
+  animation: shimmer 3s ease-in-out infinite;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
 }
 
 .cta-content {
@@ -156,28 +174,44 @@ h1 {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 10px;
-  font-size: 14px;
-  line-height: 1.4;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 500;
 }
 
 .cta-text {
-  opacity: 0.95;
+  opacity: 0.92;
+  font-size: 11px;
+  letter-spacing: 0.2px;
 }
 
 .cta-divider {
-  opacity: 0.5;
+  opacity: 0.4;
   font-weight: 300;
+  font-size: 10px;
+}
+
+.cta-action {
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .cta-action strong {
-  color: var(--soft-gold);
+  background: linear-gradient(135deg, #FFF9F1, #E6D6A8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.3px;
 }
 
 .cta-payment {
-  opacity: 0.9;
-  font-size: 13px;
+  opacity: 0.85;
+  font-size: 10px;
+  letter-spacing: 0.2px;
 }
 
 .intro {
@@ -354,10 +388,43 @@ h1 {
   margin-bottom: 14px;
 }
 
+/* Ordering Notes Compact Styling */
+.ordering-notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: clamp(12px, 2.5vw, 16px);
+}
+
+.compact-card h3 {
+  font-size: 15px;
+  margin-bottom: 10px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.compact-list li {
+  padding: 8px 0;
+  font-size: 12px;
+  line-height: 1.5;
+  border-bottom: 1px solid rgba(199, 164, 73, 0.1);
+}
+
+.compact-list li:last-child {
+  border-bottom: none;
+}
+
+.compact-list strong {
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 640px) {
   body {
-    padding: 12px;
+    padding: 10px;
   }
 
   .container {
@@ -365,54 +432,64 @@ h1 {
   }
 
   .header {
-    padding: 20px 16px;
+    padding: 14px 12px;
   }
 
   .brand {
-    gap: 12px;
-    margin-bottom: 16px;
+    gap: 10px;
+    margin-bottom: 10px;
   }
 
   .logo {
-    width: 64px;
-    height: 64px;
+    width: 52px;
+    height: 52px;
     border-width: 2px;
   }
 
   h1 {
-    font-size: 24px;
-    letter-spacing: 0.3px;
+    font-size: 22px;
+    letter-spacing: 0.2px;
+    line-height: 1.05;
   }
 
   .tagline {
-    font-size: 12px;
-    margin-top: 6px;
+    font-size: 10px;
+    margin-top: 4px;
+    letter-spacing: 0.15px;
   }
 
   .cta-bar {
-    padding: 16px;
-    margin-top: 16px;
-    margin-bottom: 10px;
-    border-radius: 12px;
+    padding: 10px 12px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    border-radius: 10px;
   }
 
   .cta-content {
     flex-direction: column;
     text-align: center;
-    gap: 8px;
-    font-size: 13px;
+    gap: 5px;
+    font-size: 11px;
   }
   
   .cta-divider {
     display: none;
   }
 
+  .cta-text {
+    font-size: 10px;
+  }
+
   .cta-action {
-    font-size: 15px;
+    font-size: 13px;
+  }
+
+  .cta-action strong {
+    font-size: 13px;
   }
 
   .cta-payment {
-    font-size: 12px;
+    font-size: 9px;
   }
 
   .intro {
@@ -436,83 +513,109 @@ h1 {
   }
 
   .content {
-    padding: 20px 16px;
+    padding: 16px 12px;
   }
 
   .section {
-    margin-bottom: 32px;
+    margin-bottom: 28px;
   }
 
   .section-header {
-    gap: 10px;
-    margin-bottom: 16px;
+    gap: 8px;
+    margin-bottom: 14px;
     flex-wrap: wrap;
   }
 
   .section-header h2 {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .badge {
-    font-size: 10px;
-    padding: 6px 10px;
-    letter-spacing: 0.6px;
+    font-size: 9px;
+    padding: 5px 9px;
+    letter-spacing: 0.5px;
   }
 
   .grid {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: 12px;
   }
 
   .card {
-    padding: 16px;
+    padding: 14px;
     border-radius: 12px;
   }
 
   .card h3 {
-    font-size: 16px;
-    margin-bottom: 10px;
+    font-size: 15px;
+    margin-bottom: 9px;
   }
 
   .card-subtitle {
-    font-size: 12px;
-    margin-bottom: 12px;
+    font-size: 11px;
+    margin-bottom: 10px;
     line-height: 1.4;
   }
 
   .menu-list li {
-    padding: 12px 0;
-    font-size: 14px;
+    padding: 11px 0;
+    font-size: 13px;
     line-height: 1.6;
   }
 
   .menu-list strong {
-    font-size: 14px;
+    font-size: 13px;
     display: block;
     margin-bottom: 2px;
   }
 
   .menu-list em {
-    font-size: 12px;
+    font-size: 11px;
   }
 
   .note {
-    margin-top: 14px;
-    padding-top: 14px;
-    font-size: 12px;
+    margin-top: 12px;
+    padding-top: 12px;
+    font-size: 11px;
     line-height: 1.6;
   }
   
   .brooklyn-skyline {
-    width: clamp(280px, 85vw, 420px);
+    width: clamp(260px, 82vw, 400px);
     opacity: 0.05;
-    top: 5%;
-    right: -8%;
+    top: 8%;
+    right: -10%;
+  }
+
+  /* Compact ordering notes on mobile */
+  .ordering-notes-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .compact-card {
+    padding: 12px;
+  }
+
+  .compact-card h3 {
+    font-size: 14px;
+    margin-bottom: 8px;
+  }
+
+  .compact-list li {
+    padding: 7px 0;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  .compact-list strong {
+    font-size: 10px;
+    letter-spacing: 0.25px;
   }
 
   /* Improve touch targets for mobile */
   .menu-list li {
-    min-height: 44px; /* iOS minimum touch target */
+    min-height: 44px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -533,6 +636,10 @@ h1 {
   .brooklyn-skyline {
     width: 500px;
     opacity: 0.07;
+  }
+
+  .ordering-notes-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -641,30 +748,14 @@ h1 {
 
       <div class="cta-bar">
         <div class="cta-content">
-          <span class="cta-text">Holiday availability is limited — book early for preferred dates.</span>
+          <span class="cta-text">Limited holiday availability</span>
           <span class="cta-divider">•</span>
-          <span class="cta-action"><strong>Text 347-420-8728 to Order</strong></span>
+          <span class="cta-action"><strong>Text 347-420-8728</strong></span>
           <span class="cta-divider">•</span>
-          <span class="cta-payment">Invoicing + Payments via Square</span>
+          <span class="cta-payment">Square invoicing</span>
         </div>
       </div>
 
-      <div class="intro">
-        <div class="intro-grid">
-          <div class="intro-item">
-            <strong>Prix Fixe Experience</strong>
-            <span>Choose 2 Mains • 3 Sides • 2 Bites — Full setup with chafing dishes, house sauces & warmers</span>
-          </div>
-          <div class="intro-item">
-            <strong>Ideal For</strong>
-            <span>12–40 guests • Holiday gatherings, office parties, family feasts</span>
-          </div>
-          <div class="intro-item">
-            <strong>Signature Sauces Included</strong>
-            <span>Ají Verde • Garlic-Mojo • Cranberry-Citrus Relish</span>
-          </div>
-        </div>
-      </div>
     </header>
 
     <!-- CONTENT -->
@@ -679,15 +770,13 @@ h1 {
         
         <div class="grid">
           <div class="card">
-            <p class="card-subtitle">Select any 2 mains for your holiday spread</p>
             <ul class="menu-list">
-              <li><strong>Pernil Mojo</strong> — Slow-roasted pork shoulder, citrus-garlic jus</li>
+              <li><strong>Pernil Mojo</strong> — Slow-roasted pork shoulder</li>
               <li><strong>Peruvian Chicken</strong> — Roasted, served with ají verde</li>
             </ul>
           </div>
 
           <div class="card">
-            <p class="card-subtitle">&nbsp;</p>
             <ul class="menu-list">
               <li><strong>Jerk Salmon</strong> — Citrus-jerk glaze with holiday orange & clove</li>
               <li><strong>Filipino Pineapple Glazed Ham</strong> — Brown sugar & holiday spice</li>
@@ -758,18 +847,32 @@ h1 {
         </div>
       </section>
 
-      <!-- NOTES -->
+      <!-- ORDERING NOTES & EXPERIENCE -->
       <section class="section">
         <div class="section-header">
           <h2>Ordering Notes</h2>
         </div>
         
-        <div class="card">
-          <ul class="menu-list">
-            <li>50% Non-refundable deposit via Square required to book order</li>
-            <li>Pricing includes food & standard setup (chafing dishes, warmers, delivery within Brooklyn).</li>
-            <li>Dietary accommodations available (GF/veg on request).</li>
-          </ul>
+        <div class="grid ordering-notes-grid">
+          <div class="card compact-card">
+            <h3>The Experience</h3>
+            <ul class="menu-list compact-list">
+              <li><strong>Format:</strong> Choose 2 Mains • 3 Sides • 2 Bites</li>
+              <li><strong>Setup:</strong> Chafing dishes, warmers & house sauces</li>
+              <li><strong>Guest Range:</strong> 12–40 people ideal</li>
+              <li><strong>Perfect For:</strong> Holiday parties, office gatherings, family feasts</li>
+            </ul>
+          </div>
+
+          <div class="card compact-card">
+            <h3>Details</h3>
+            <ul class="menu-list compact-list">
+              <li><strong>Deposit:</strong> 50% non-refundable via Square</li>
+              <li><strong>Includes:</strong> Brooklyn delivery & standard setup</li>
+              <li><strong>Sauces:</strong> Ají Verde • Garlic-Mojo • Cranberry-Citrus</li>
+              <li><strong>Dietary:</strong> GF/veg available on request</li>
+            </ul>
+          </div>
         </div>
       </section>
 
