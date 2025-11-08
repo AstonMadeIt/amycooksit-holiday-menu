@@ -1,367 +1,632 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-<title>Amy Cooks It — Holiday ’25 Menu</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amy Cooks It — Holiday '25 Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  /* ==============================
-     THEME
-     ============================== */
-  :root{
-    --cream:#FFF9F1;
-    --ink:#151515;
-    --gold:#C7A449;
-    --green:#1F6F54;
-    --cran:#7A1F2B;
-    --soft-gold:#E6D6A8;
-    --paper:#FFFEFB;
-    --line:#EADFBE;
-    --bg-1: radial-gradient(1200px 600px at 80% -10%, rgba(199,164,73,.16), transparent 55%);
-    --bg-2: radial-gradient(1000px 500px at -10% 0%, rgba(122,31,43,.10), transparent 50%);
-  }
+:root{
+  --cream: #FFF9F1;
+  --ink: #151515;
+  --gold: #C7A449;
+  --green: #1F6F54;
+  --cranberry: #7A1F2B;
+  --soft-gold: #E6D6A8;
+  --paper: #FFFEFB;
+  --line: #EADFBE;
+}
 
-  /* iOS-safe reset */
-  *{box-sizing:border-box}
-  html,body{margin:0; height:100%}
-  body{
-    background:var(--cream);
-    color:var(--ink);
-    font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-    -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
-    min-height:100%;
-  }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* Subtle parallax background that moves ~1deg on scroll */
-  .ambient {
-    position: fixed; inset: 0; pointer-events:none; z-index:-1;
-    background:
-      var(--bg-1),
-      var(--bg-2),
-      linear-gradient(180deg, rgba(199,164,73,.05), rgba(122,31,43,.04));
-    transform: translateZ(0);
-    will-change: transform, background-position;
-  }
+body {
+  background: linear-gradient(180deg, #fffaf4 0%, #fff5ea 40%, #f7ebd7 100%);
+  color: var(--ink);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  padding: clamp(16px, 3vw, 32px);
+}
 
-  .page{
-    max-width:980px; margin: clamp(8px, 2.5vw, 36px) auto;
-    padding: clamp(12px, 3vw, 28px);
-    background:var(--paper);
-    border:1px solid #eee; border-radius:18px;
-    box-shadow:0 10px 30px rgba(20,20,20,.06);
-    position:relative;
-  }
-  .page:before,.page:after{
-    content:""; position:absolute; width:82px; height:82px; border:2px solid var(--soft-gold); border-radius:12px;
-  }
-  .page:before{top:18px; left:18px; border-right:0; border-bottom:0}
-  .page:after{bottom:18px; right:18px; border-left:0; border-top:0}
+.container {
+  max-width: 1080px;
+  margin: 0 auto;
+  background: var(--paper);
+  border-radius: 20px;
+  border: 1px solid rgba(199, 164, 73, 0.25);
+  box-shadow: 
+    0 24px 60px rgba(140, 100, 28, 0.15),
+    0 2px 0 rgba(255, 255, 255, 0.6) inset;
+  overflow: hidden;
+}
 
-  /* ===== Header (sticky glass) ===== */
-  .sticky-wrap{
-    position: sticky; top: env(safe-area-inset-top, 0); z-index: 20;
-    backdrop-filter: saturate(160%) blur(10px);
-    -webkit-backdrop-filter: saturate(160%) blur(10px);
-    border-bottom:1px solid rgba(234,223,190,.65);
-    background: color-mix(in oklab, #ffffff 72%, transparent);
-    border-top-left-radius:12px; border-top-right-radius:12px;
-  }
-  header{
-    display:grid; grid-template-columns:72px 1fr auto; gap:14px; align-items:center;
-    padding:10px clamp(10px, 3vw, 16px);
-  }
-  @media (min-width:720px){
-    header{grid-template-columns:90px 1fr auto; gap:18px; padding:12px 18px}
-  }
+/* ===== HEADER WITH SKYLINE ===== */
+.header {
+  position: relative;
+  background: 
+    radial-gradient(1200px 480px at 80% -10%, rgba(243, 217, 139, 0.24), transparent 60%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+  border-bottom: 1px solid var(--line);
+  padding: clamp(20px, 4vw, 32px);
+  overflow: hidden;
+}
 
-  .brand{
-    width:72px; height:72px; border-radius:50%;
-    border:2.5px solid var(--gold); overflow:hidden; box-shadow:0 6px 14px rgba(0,0,0,.08);
-    animation: logoFloat 6s ease-in-out infinite;
-  }
-  @media (min-width:720px){
-    .brand{width:90px;height:90px;border-width:3px}
-  }
-  .brand img{width:100%; height:100%; object-fit:cover}
+/* Brooklyn Skyline Container */
+.skyline-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
 
-  .title h1{
-    font-family:"Playfair Display", serif; font-weight:700; margin:0;
-    letter-spacing:.3px; font-size: clamp(22px, 4.2vw, 30px);
-    line-height:1.05;
-  }
-  .title p{
-    margin:6px 0 0; color:#424242; font-weight:500; font-size: clamp(12px, 3.2vw, 14px);
-  }
+.brooklyn-skyline {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: clamp(300px, 60vw, 700px);
+  height: auto;
+  opacity: 0.08;
+  transform: translateY(0);
+  animation: skylineFloat 20s ease-in-out infinite;
+}
 
-  .chip{
-    display:inline-flex; align-items:center; gap:8px;
-    border:1.5px solid var(--gold); color:var(--green);
-    padding:8px 14px; border-radius:999px; font-weight:700;
-    background:#fffaf3;
-    white-space:nowrap;
-    transform: translateZ(0);
-    transition: transform .25s ease, box-shadow .25s ease;
-  }
-  .chip .dot{
-    width:12px; height:12px; border-radius:50%;
-    border:2px solid var(--green); position:relative;
-  }
-  .chip .dot:after{
-    content:""; position:absolute; inset:2px; border-radius:50%; background:var(--green);
-  }
-  .chip:active{ transform: scale(.98) }
-  .chip:hover{ box-shadow:0 6px 14px rgba(0,0,0,.08) }
+@keyframes skylineFloat {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-8px) translateX(5px); }
+}
 
-  /* ===== Sections & Cards ===== */
-  .section{
-    margin: clamp(14px, 4.5vw, 24px) 0;
-    padding: clamp(10px, 3.5vw, 16px) clamp(10px, 3.5vw, 18px);
-    border:1px solid var(--line); border-radius:14px;
-    background:#FFFEF7;
-  }
-  .section h2{
-    font-family:"Playfair Display", serif; font-weight:700; margin:2px 0 10px;
-    display:flex; align-items:center; gap:10px; letter-spacing:.4px; font-size: clamp(18px, 4vw, 22px);
-  }
-  .pill{
-    font-family:Inter, system-ui; font-size:11px; letter-spacing:.6px;
-    padding:6px 10px; border-radius:999px; color:#fff; font-weight:800;
-    text-transform:uppercase;
-  }
-  .pill.green{background:var(--green)}
-  .pill.cran{background:var(--cran)}
-  .pill.gold{background:var(--gold); color:#1f1a10}
+/* Subtle gradient overlay for depth */
+.skyline-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, 
+    rgba(199, 164, 73, 0.03) 0%,
+    transparent 100%);
+  pointer-events: none;
+}
 
-  .grid{
-    display:grid; grid-template-columns:1fr; gap:12px;
-  }
-  @media (min-width:720px){
-    .grid{grid-template-columns:repeat(2, 1fr); gap:14px}
-  }
+/* Brand section now layered above skyline */
+.brand {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: clamp(14px, 3vw, 20px);
+  margin-bottom: 18px;
+}
 
-  .card{
-    border:1px solid var(--line); background:#fff; border-radius:12px; padding: clamp(12px, 3.4vw, 14px);
-    transform: translateY(10px); opacity:0; will-change: transform, opacity;
-  }
-  .card.revealed{ animation: rise .6s cubic-bezier(.2,.7,.2,1) forwards }
-  .card h3{
-    margin:0 0 6px; font-size: clamp(15px, 4vw, 16px); font-weight:800; letter-spacing:.2px
-  }
-  .meta{ font-size:12.5px; color:#6b6b6b; margin:0 0 8px }
-  ul.menu{margin:0; padding-left:18px}
-  ul.menu li{margin:6px 0; line-height:1.35; font-size: clamp(14px, 3.7vw, 15.5px)}
-  .note{font-size:12.5px; color:#4a4a4a}
+.logo {
+  width: clamp(72px, 12vw, 96px);
+  height: clamp(72px, 12vw, 96px);
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  overflow: hidden;
+  box-shadow: 
+    inset 0 0 0 2px rgba(255, 255, 255, 0.75),
+    0 8px 20px rgba(140, 100, 28, 0.2);
+  position: relative;
+  background: white;
+}
 
-  /* Cocktail Bites center/tight */
-  [aria-label="Holiday Cocktail Bites"] .grid { display:flex; justify-content:center; }
-  [aria-label="Holiday Cocktail Bites"] .card { max-width:700px; width:100%; margin:0 auto; }
-  [aria-label="Holiday Cocktail Bites"] h3 { text-align:center; margin-bottom:10px; font-size: clamp(16px, 4.4vw, 18px)}
-  [aria-label="Holiday Cocktail Bites"] ul.menu { font-size: clamp(14px, 3.7vw, 15.5px) }
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-  /* Animations */
-  @keyframes rise { from{opacity:0; transform:translateY(10px)} to{opacity:1; transform:translateY(0)} }
-  @keyframes logoFloat { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-4px) } }
+h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  line-height: 1.1;
+  position: relative;
+}
 
-  /* Respect users who prefer reduced motion */
-  @media (prefers-reduced-motion: reduce){
-    .ambient{ background-attachment: local }
-    .brand{ animation:none }
-    .card{ opacity:1; transform:none }
-    .card.revealed{ animation:none }
+.tagline {
+  color: #525762;
+  font-size: clamp(13px, 3vw, 15px);
+  font-weight: 500;
+  margin-top: 8px;
+  position: relative;
+}
+
+.cta-bar {
+  position: relative;
+  z-index: 2;
+  background: var(--green);
+  color: #fff;
+  border-radius: 10px;
+  padding: 14px clamp(18px, 3.5vw, 24px);
+  margin-top: 20px;
+  margin-bottom: 12px;
+  box-shadow: 0 4px 12px rgba(31, 111, 84, 0.25);
+}
+
+.cta-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.cta-text {
+  opacity: 0.95;
+}
+
+.cta-divider {
+  opacity: 0.5;
+  font-weight: 300;
+}
+
+.cta-action strong {
+  color: var(--soft-gold);
+  font-weight: 700;
+}
+
+.cta-payment {
+  opacity: 0.9;
+  font-size: 13px;
+}
+
+.intro {
+  position: relative;
+  z-index: 2;
+  background: 
+    linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0.82));
+  border: 1px solid rgba(199, 155, 50, 0.25);
+  border-radius: 14px;
+  padding: clamp(16px, 3vw, 20px);
+  box-shadow: 0 12px 24px rgba(17, 17, 22, 0.08);
+}
+
+@media (max-width: 640px) {
+  .cta-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 6px;
   }
+  
+  .cta-divider {
+    display: none;
+  }
+  
+  .brooklyn-skyline {
+    width: clamp(250px, 80vw, 400px);
+    opacity: 0.06;
+    top: 5%;
+    right: -10%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .brooklyn-skyline {
+    width: 800px;
+    opacity: 0.1;
+  }
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+}
+
+.intro-item strong {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--ink);
+}
+
+.intro-item span {
+  color: #666d79;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+/* ===== CONTENT ===== */
+.content {
+  padding: clamp(20px, 4vw, 36px);
+}
+
+.section {
+  margin-bottom: clamp(24px, 5vw, 40px);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.section-header h2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(22px, 4.5vw, 28px);
+  font-weight: 700;
+  letter-spacing: 0.4px;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.badge.gold { background: linear-gradient(135deg, #E6D6A8, #C7A449); color: #1f1a10; }
+.badge.green { background: var(--green); }
+.badge.cranberry { background: var(--cranberry); }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: clamp(14px, 3vw, 18px);
+}
+
+.card {
+  background: 
+    linear-gradient(180deg, #ffffff, #faf5e9);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: clamp(16px, 3.5vw, 20px);
+  box-shadow: 
+    0 1px 0 #fff inset,
+    0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.card h3 {
+  font-size: clamp(16px, 3.8vw, 19px);
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--ink);
+  letter-spacing: 0.2px;
+}
+
+.card-subtitle {
+  font-size: 13px;
+  color: #666d79;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.menu-list {
+  list-style: none;
+}
+
+.menu-list li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(199, 164, 73, 0.12);
+  font-size: clamp(14px, 3.2vw, 15.5px);
+  line-height: 1.5;
+}
+
+.menu-list li:last-child {
+  border-bottom: none;
+}
+
+.menu-list strong {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.menu-list em {
+  color: #666d79;
+  font-style: normal;
+  font-size: 13px;
+}
+
+.note {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  font-size: 13px;
+  color: #4a4a4a;
+  line-height: 1.5;
+}
+
+/* Single wide card for Cocktail Bites */
+.wide-card {
+  grid-column: 1 / -1;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.wide-card h3 {
+  text-align: center;
+  font-size: clamp(17px, 4vw, 20px);
+  margin-bottom: 14px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 640px) {
+  .intro-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 </head>
 <body>
-  <!-- Ambient background layer -->
-  <div class="ambient" aria-hidden="true"></div>
+  <div class="container">
+    
+    <!-- HEADER -->
+    <header class="header">
+      <!-- Brooklyn Skyline SVG -->
+      <div class="skyline-container">
+        <svg class="brooklyn-skyline" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="skylineGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" style="stop-color:#C7A449;stop-opacity:1" />
+              <stop offset="100%" style="stop-color:#8C641C;stop-opacity:0.95" />
+            </linearGradient>
+          </defs>
+          
+          <!-- Brooklyn Bridge -->
+          <g id="bridge">
+            <!-- Bridge cables -->
+            <path d="M 50 280 Q 120 240 180 280" stroke="url(#skylineGradient)" stroke-width="2" fill="none"/>
+            <path d="M 70 280 Q 120 250 170 280" stroke="url(#skylineGradient)" stroke-width="1.5" fill="none"/>
+            <path d="M 90 280 Q 120 260 150 280" stroke="url(#skylineGradient)" stroke-width="1.5" fill="none"/>
+            <!-- Bridge towers -->
+            <rect x="115" y="220" width="10" height="80" fill="url(#skylineGradient)"/>
+            <!-- Bridge deck -->
+            <rect x="20" y="280" width="190" height="6" fill="url(#skylineGradient)"/>
+          </g>
+          
+          <!-- Manhattan Skyline -->
+          <g id="manhattan">
+            <!-- Freedom Tower (One World Trade) -->
+            <polygon points="260,100 270,90 280,100 280,300 260,300" fill="url(#skylineGradient)"/>
+            <rect x="265" y="85" width="10" height="10" fill="url(#skylineGradient)"/>
+            
+            <!-- Financial District buildings -->
+            <rect x="220" y="180" width="30" height="120" fill="url(#skylineGradient)"/>
+            <rect x="225" y="175" width="20" height="5" fill="url(#skylineGradient)"/>
+            
+            <rect x="290" y="160" width="35" height="140" fill="url(#skylineGradient)"/>
+            <rect x="295" y="155" width="25" height="5" fill="url(#skylineGradient)"/>
+            
+            <rect x="330" y="190" width="28" height="110" fill="url(#skylineGradient)"/>
+            
+            <!-- Midtown buildings -->
+            <rect x="365" y="140" width="32" height="160" fill="url(#skylineGradient)"/>
+            <rect x="370" y="135" width="22" height="5" fill="url(#skylineGradient)"/>
+            
+            <rect x="402" y="170" width="26" height="130" fill="url(#skylineGradient)"/>
+            
+            <!-- Empire State Building inspired -->
+            <polygon points="435,120 445,115 455,120 455,300 435,300" fill="url(#skylineGradient)"/>
+            <rect x="440" y="110" width="10" height="10" fill="url(#skylineGradient)"/>
+            
+            <rect x="460" y="185" width="30" height="115" fill="url(#skylineGradient)"/>
+            
+            <rect x="495" y="200" width="28" height="100" fill="url(#skylineGradient)"/>
+            
+            <!-- More varied buildings -->
+            <rect x="528" y="165" width="34" height="135" fill="url(#skylineGradient)"/>
+            <polygon points="528,165 545,155 562,165" fill="url(#skylineGradient)"/>
+            
+            <rect x="565" y="195" width="25" height="105" fill="url(#skylineGradient)"/>
+            
+            <rect x="593" y="175" width="32" height="125" fill="url(#skylineGradient)"/>
+            
+            <rect x="628" y="210" width="27" height="90" fill="url(#skylineGradient)"/>
+            
+            <!-- Brooklyn side buildings -->
+            <rect x="660" y="230" width="30" height="70" fill="url(#skylineGradient)"/>
+            <rect x="695" y="220" width="35" height="80" fill="url(#skylineGradient)"/>
+            <rect x="735" y="240" width="28" height="60" fill="url(#skylineGradient)"/>
+          </g>
+          
+          <!-- Water reflection line -->
+          <line x1="0" y1="305" x2="800" y2="305" stroke="url(#skylineGradient)" stroke-width="1" opacity="0.3"/>
+          
+          <!-- Subtle water ripples -->
+          <path d="M 0 315 Q 100 310 200 315 T 400 315 T 600 315 T 800 315" 
+                stroke="url(#skylineGradient)" 
+                stroke-width="1" 
+                fill="none" 
+                opacity="0.15"/>
+        </svg>
+      </div>
 
-  <main class="page" role="document" aria-label="Amy Cooks It Holiday 2025 Menu">
-    <div class="sticky-wrap">
-      <header>
-        <div class="brand">
-          <img alt="Amy Cooks It logo" src="AmyCooksItLogo.jpeg" />
+      <div class="brand">
+        <div class="logo">
+          <img src="AmyCooksItLogo.jpeg" alt="Amy Cooks It Logo">
         </div>
-        <div class="title">
-          <h1>Amy Cooks It</h1>
-          <p>Brooklyn & Greater NYC • 24–48h Notice</p>
-        </div>
-        <div class="chip" role="button" aria-pressed="true" title="Menu Selection">
-          <span class="dot" aria-hidden="true"></span>Prix Fix Menu
-        </div>
-      </header>
-    </div>
-
-    <!-- WHAT’S INCLUDED -->
-    <section class="section" aria-label="What's Included">
-      <h2><span class="pill gold">WHAT’S INCLUDED</span></h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Build Your Feast</h3>
-          <ul class="menu">
-            <li><strong>Choose 2 Mains</strong> (from Latin or American)</li>
-            <li><strong>Choose 3 Sides</strong></li>
-            <li><strong>Choose 2 Bites</strong> (hand-held starters)</li>
-            <li>House sauces (Ají Verde, Garlic-Mojo, Cranberry-Citrus)</li>
-          </ul>
-          <p class="note">Professional chafing setup • Warmer stations • Delivery within Brooklyn (final quote includes gratuity + rentals if needed)</p>
-        </div>
-        <div class="card">
-          <h3>Guest Range & Service</h3>
-          <ul class="menu">
-            <li>Ideal party size: 12–40 guests</li>
-            <li>On-site frying available for select items (adds theater)</li>
-            <li>Chef’s Table plating & service staff available (upgrade)</li>
-          </ul>
-          <p class="note">Holiday availability is limited — reserve early for preferred dates.</p>
+        <div>
+          <h1>Holiday '25 Menu</h1>
+          <p class="tagline">Brooklyn & Greater NYC • 24–48h Notice</p>
         </div>
       </div>
-    </section>
 
-    <!-- LATIN -->
-    <section class="section" aria-label="Latin">
-      <h2><span class="pill gold">LATIN</span></h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Mains (select up to 2 total across Latin + American)</h3>
-          <ul class="menu">
-            <li><strong>Pernil Mojo</strong> — slow-roasted pork shoulder, citrus-garlic jus</li>
-            <li><strong>Peruvian Chicken</strong> — roasted, served with <em>Ají Verde</em></li>
-            <li><strong>Jerk Salmon</strong> — citrus-jerk glaze (holiday orange & clove)</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Sides</h3>
-          <ul class="menu">
-            <li><strong>Arroz con Gandules</strong> — sofrito, pigeon peas</li>
-            <li><strong>Mojo Yuca</strong> — garlicky citrus drizzle</li>
-            <li><strong>Sweet Plantains</strong> — caramelized, tender</li>
-            <li><strong>Yuca Fritters</strong> — crisp, with lime aioli</li>
-          </ul>
+      <div class="cta-bar">
+        <div class="cta-content">
+          <span class="cta-text">Holiday availability is limited — book early for preferred dates.</span>
+          <span class="cta-divider">•</span>
+          <span class="cta-action"><strong>Text 347-420-8728 to Order</strong></span>
+          <span class="cta-divider">•</span>
+          <span class="cta-payment">Invoicing + Payments via Square</span>
         </div>
       </div>
-    </section>
 
-    <!-- AMERICAN -->
-    <section class="section" aria-label="American">
-      <h2><span class="pill gold">AMERICAN</span></h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Mains</h3>
-          <ul class="menu">
-            <li><strong>Filet Medallions</strong> — pan-jus (market)</li>
-            <li><strong>Roasted Turkey Breast</strong> — herb butter, pan gravy</li>
-            <li><strong>Honey-Glazed Ham</strong> — brown sugar & spice</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Sides</h3>
-          <ul class="menu">
-            <li><strong>Brown-Butter Sage Mash</strong></li>
-            <li><strong>Roasted Roots</strong> — maple & thyme</li>
-            <li><strong>Cranberry-Citrus Relish</strong></li>
-            <li><strong>Green Beans with Almond</strong></li>
-          </ul>
+      <div class="intro">
+        <div class="intro-grid">
+          <div class="intro-item">
+            <strong>Prix Fixe Experience</strong>
+            <span>Choose 2 Mains • 3 Sides • 2 Bites — Full setup with chafing dishes, house sauces & warmers</span>
+          </div>
+          <div class="intro-item">
+            <strong>Ideal For</strong>
+            <span>12–40 guests • Holiday gatherings, office parties, family feasts</span>
+          </div>
+          <div class="intro-item">
+            <strong>Signature Sauces Included</strong>
+            <span>Ají Verde • Garlic-Mojo • Cranberry-Citrus Relish</span>
+          </div>
         </div>
       </div>
-    </section>
+    </header>
 
-    <!-- UPSCALE HOLIDAY FAVORITES -->
-    <section class="section" aria-label="Upscale Holiday Favorites">
-      <h2><span class="pill cran">UPSCALE HOLIDAY FAVORITES</span></h2>
-      <div class="grid">
+    <!-- CONTENT -->
+    <main class="content">
+
+      <!-- LATIN SELECTIONS -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Latin Selections</h2>
+          <span class="badge gold">Caribbean Soul</span>
+        </div>
+        
+        <div class="grid">
+          <div class="card">
+            <h3>Mains</h3>
+            <p class="card-subtitle">Select up to 2 total across Latin + American</p>
+            <ul class="menu-list">
+              <li><strong>Pernil Mojo</strong> — Slow-roasted pork shoulder, citrus-garlic jus</li>
+              <li><strong>Peruvian Chicken</strong> — Roasted, served with ají verde</li>
+              <li><strong>Jerk Salmon</strong> — Citrus-jerk glaze with holiday orange & clove</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Sides</h3>
+            <p class="card-subtitle">Choose 3</p>
+            <ul class="menu-list">
+              <li><strong>Arroz con Gandules</strong> — Puerto Rican rice, pigeon peas, sofrito</li>
+              <li><strong>Mojo Yuca</strong> — Cassava with garlicky citrus drizzle</li>
+              <li><strong>Sweet Plantains</strong> — Caramelized to golden perfection</li>
+              <li><strong>Yuca Fritters</strong> — Crispy outside, fluffy inside, lime aioli</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- AMERICAN CLASSICS -->
+      <section class="section">
+        <div class="section-header">
+          <h2>American Classics</h2>
+          <span class="badge cranberry">Holiday Table</span>
+        </div>
+        
+        <div class="grid">
+          <div class="card">
+            <h3>Mains</h3>
+            <ul class="menu-list">
+              <li><strong>Roasted Turkey Breast</strong> — Herb butter, pan gravy</li>
+              <li><strong>Filipino Pineapple Glazed Ham</strong> — Brown sugar & holiday spice</li>
+              <li><strong>Baked Salmon</strong> — Citrus, garlic & herbs for a clean finish</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Sides</h3>
+            <ul class="menu-list">
+              <li><strong>Brown-Butter Sage Mash</strong> — Creamy, rich, indulgent</li>
+              <li><strong>Roasted Root Vegetables</strong> — Maple & thyme</li>
+              <li><strong>Cranberry-Citrus Relish</strong> — Bright, tangy, festive</li>
+              <li><strong>Green Beans with Almond</strong> — Simple, elegant</li>
+              <li><strong>Mac & Cheese</strong> — Creamy, comfort at its finest</li>
+              <li><strong>Collard Greens</strong> — Southern soul, slow-cooked</li>
+              <li><strong>Cornbread</strong> — Buttery, golden wedges</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- UPSCALE UPGRADES -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Upscale Upgrades</h2>
+          <span class="badge green">Premium Add-Ons</span>
+        </div>
+        
+        <div class="grid">
+          <div class="card">
+            <h3>Premium Mains</h3>
+            <ul class="menu-list">
+              <li><strong>Seafood Paella</strong> — Saffron rice, shellfish medley <em>(+$10 pp)</em></li>
+              <li><strong>Braised Oxtails</strong> — Rich holiday jus, fall-off-the-bone <em>(+$12 pp)</em></li>
+              <li><strong>Filet Medallions</strong> — Pan jus <em>(market price)</em></li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Elevated Sides & Sweets</h3>
+            <ul class="menu-list">
+              <li><strong>Truffle Mac</strong> <em>(+$4 pp)</em></li>
+              <li><strong>Broccolini</strong> — Garlic & lemon <em>(+$3 pp)</em></li>
+              <li><strong>Stuffing</strong> — Herb-forward, classic <em>(+$3 pp)</em></li>
+            </ul>
+            <p class="note"><strong>Sweet Finishes:</strong> Coquito Trifle Cups <em>(+$5 pp)</em> • Sorrel Sparkler mocktail <em>(+$4 pp)</em></p>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOLIDAY COCKTAIL BITES -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Holiday Cocktail Bites</h2>
+          <span class="badge gold">Office & Teen Parties</span>
+        </div>
+        
+        <div class="grid">
+          <div class="card wide-card">
+            <h3>Hand-Held Starters & Party Favorites</h3>
+            <p class="card-subtitle">Perfect for mixers, teen gatherings & value-driven spreads</p>
+            <ul class="menu-list">
+              <li><strong>Wings</strong> — Lemon pepper • Garlic • Buffalo</li>
+              <li><strong>Hot Honey Chicken Tenders</strong> — Sweet heat, crowd-pleaser</li>
+              <li><strong>Mini Sliders</strong> — Potato buns, pickles, all-American</li>
+              <li><strong>Italian Subs (mini)</strong> — Salami, sharp provolone, vinegar slaw</li>
+              <li><strong>Sausage & Peppers</strong> — Classic, comforting</li>
+              <li><strong>Empanadas</strong> — Chicken, beef or veggie (25 pcs)</li>
+              <li><strong>Alcapurrias</strong> — Puerto Rican fritters, savory ground beef (25 pcs)</li>
+            </ul>
+            <p class="note">These can substitute for bites in the prix fixe or be combined into a standalone party spread.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- NOTES -->
+      <section class="section">
+        <div class="section-header">
+          <h2>Good to Know</h2>
+        </div>
+        
         <div class="card">
-          <h3>Premium Mains (upgrade)</h3>
-          <ul class="menu">
-            <li><strong>Seafood Paella</strong> — saffron, shellfish medley <em>(+$10 pp)</em></li>
-            <li><strong>Braised Oxtails</strong> — rich holiday jus <em>(+$12 pp)</em></li>
-            <li><strong>Filet Medallions</strong> — aji-pan sauce <em>(market)</em></li>
+          <ul class="menu-list">
+            <li>Pricing includes food & standard setup (chafing dishes, warmers, delivery within Brooklyn).</li>
+            <li>Staffed service, rentals & long-distance delivery quoted as needed.</li>
+            <li>Dietary accommodations available (GF/veg on request).</li>
+            <li>Holiday upgrades (Paella, Oxtail, Filet, Truffle Mac, desserts) priced as listed.</li>
+            <li>Chef's Table plating & holiday tablescape styling available (inquire for pricing).</li>
           </ul>
         </div>
-        <div class="card">
-          <h3>Elevated Sides & Finishes</h3>
-          <ul class="menu">
-            <li><strong>Truffle Mac</strong> <em>(+$4 pp)</em></li>
-            <li><strong>Brown-Butter Sage Mash</strong></li>
-            <li><strong>Roasted Roots</strong> — maple & thyme</li>
-          </ul>
-        </div>
-      </div>
-      <div class="grid" style="margin-top:12px">
-        <div class="card">
-          <h3>Sweet Sips (add-on)</h3>
-          <ul class="menu">
-            <li><strong>Coquito Trifle Cups</strong> <em>(+$5 pp)</em></li>
-            <li><strong>Sorrel Sparkler</strong> (mocktail) <em>(+$4 pp)</em></li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Plating & Service (optional)</h3>
-          <ul class="menu">
-            <li>Chef’s Table course-plated service</li>
-            <li>Holiday tablescape & styling (greenery × brass × cranberry)</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- HOLIDAY COCKTAIL BITES -->
-    <section class="section" aria-label="Holiday Cocktail Bites">
-      <h2><span class="pill green">HOLIDAY COCKTAIL BITES</span></h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Perfect for Office Mixers & Teen Parties</h3>
-          <ul class="menu">
-            <li><strong>Wings</strong> — lemon pepper • garlic • buffalo</li>
-            <li><strong>Hot Honey Chicken Tenders</strong></li>
-            <li><strong>Mini Sliders</strong> — potato buns, pickles</li>
-            <li><strong>Italian Subs (mini)</strong> — salami, sharp provolone</li>
-            <li><strong>Sausage & Peppers</strong></li>
-          </ul>
-          <p class="note">These items can sub in for bites or be combined into a value-driven holiday spread.</p>
-        </div>
-      </div>
-    </section>
+    </main>
 
-    <!-- NOTES -->
-    <section class="section" aria-label="Notes">
-      <h2><span class="pill gold">NOTES</span></h2>
-      <div class="card">
-        <ul class="menu">
-          <li>Pricing is for food & standard setup. Staffed service, rentals, and long-distance delivery are quoted as needed.</li>
-          <li>Dietary accommodations available (GF/veg on request).</li>
-          <li>Holiday upgrades (Paella/Oxtail/Filet, Truffle Mac, desserts, styling) priced as listed.</li>
-        </ul>
-      </div>
-    </section>
-  </main>
-
-<script>
-  // Ambient parallax drift on scroll (very subtle, mobile-safe)
-  const ambient = document.querySelector('.ambient');
-  let lastY = 0;
-  function onScroll(){
-    const y = window.scrollY || document.documentElement.scrollTop;
-    const delta = (y - lastY) * 0.015; // gentle
-    ambient.style.transform = `translate3d(0, ${-y*0.02}px, 0) rotate(${delta}deg)`;
-    lastY = y;
-  }
-  // Reveal cards on enter viewport
-  const io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target); }
-    });
-  }, {rootMargin: "80px 0px", threshold: 0.05});
-
-  document.querySelectorAll('.card').forEach(c=> io.observe(c));
-
-  // Reduce motion respect
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if(prefersReduced){
-    window.removeEventListener('scroll', onScroll);
-  }else{
-    window.addEventListener('scroll', onScroll, {passive:true});
-  }
-</script>
+  </div>
 </body>
 </html>
