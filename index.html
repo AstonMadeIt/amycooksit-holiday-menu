@@ -353,13 +353,14 @@ h1 {
 .mains-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: clamp(20px, 4vw, 32px);
+  gap: clamp(16px, 3vw, 32px);
 }
 
+/* Keep two columns even on mobile for mains */
 @media (max-width: 640px) {
   .mains-grid {
-    grid-template-columns: 1fr;
-    gap: 0;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
   }
 }
 
