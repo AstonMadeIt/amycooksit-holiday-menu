@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Amy Cooks It – Holiday Sides (Two Column)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FFF8F0;
+  --ink:#1A1A1A;
+  --warm:#6B6558;
+  --gold:#B8943D;
+  --divider:rgba(107,101,88,0.16);
+}
+
+/* reset */
+*,
+*::before,
+*::after{ box-sizing:border-box; margin:0; padding:0; }
+
+body{
+  min-height:100vh;
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  background:
+    radial-gradient(circle at top center, rgba(201,138,74,0.2) 0%, transparent 60%),
+    linear-gradient(to bottom, #FFF9F3 0%, #FFF4E8 100%);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrap{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:12px;
+}
+.canvas{
+  width:100%;
+  max-width:1080px;
+  aspect-ratio:9/16;
+  background:var(--cream);
+  border-radius:26px;
+  box-shadow:0 22px 80px rgba(0,0,0,0.14);
+  padding:24px 26px 26px;
+  display:flex;
+  flex-direction:column;
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  margin-bottom:16px;
+}
+.logo{
+  width:56px;
+  height:56px;
+  border-radius:50%;
+  margin:0 auto 6px;
+  background:#fff;
+  box-shadow:0 10px 28px rgba(31,111,84,0.2),0 0 0 1px rgba(255,255,255,0.9);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+.logo img{ max-width:100%; height:auto; }
+.hero h1{
+  font-family:"Playfair Display",serif;
+  font-size:26px;
+}
+.hero-sub{
+  font-size:13px;
+  color:var(--warm);
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  margin-top:2px;
+}
+
+/* SECTION */
+.section-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
+  border-bottom:2px solid var(--divider);
+  padding-bottom:6px;
+}
+.section-title{
+  font-family:"Playfair Display",serif;
+  font-size:18px;
+}
+.badge{
+  font-size:11px;
+  padding:5px 10px;
+  border-radius:999px;
+  border:1px solid rgba(201,138,74,0.5);
+  background:rgba(201,138,74,0.12);
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:#A0662C;
+}
+
+/* GRID */
+.grid{
+  flex:1;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:8px;
+  overflow:auto;
+}
+.card{
+  background:#fff;
+  border-radius:14px;
+  padding:10px 11px 11px;
+  border:1px solid rgba(0,0,0,0.03);
+  box-shadow:0 8px 26px rgba(26,20,12,0.12);
+}
+.name{
+  font-family:"Playfair Display",serif;
+  font-size:15px;
+  margin-bottom:3px;
+}
+.desc{
+  font-size:12px;
+  color:var(--warm);
+  line-height:1.4;
+  margin-bottom:3px;
+}
+.price{
+  font-size:13px;
+  font-weight:600;
+  color:var(--gold);
+}
+
+/* small screens */
+@media (max-width:600px){
+  .canvas{ padding:22px 16px 22px; border-radius:0; box-shadow:none; }
+  .grid{ grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="canvas">
+    <header class="hero">
+      <div class="logo"><img src="AmyCooksItLogo.jpeg" alt="Amy Cooks It"></div>
+      <div class="hero-sub">Holiday Menu 2025</div>
+      <h1>Sides &amp; Accompaniments</h1>
+    </header>
+
+    <section style="flex:1;display:flex;flex-direction:column;">
+      <div class="section-header">
+        <h2 class="section-title">Soulful Sides</h2>
+        <span class="badge">Family favorites</span>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="name">Smoked Turkey Collard Greens</div>
+          <div class="desc">Southern soul, slow-cooked with smoked turkey. Feeds 8–10.</div>
+          <div class="price">$60</div>
+        </article>
+
+        <article class="card">
+          <div class="name">Four Cheese Mac and Cheese</div>
+          <div class="desc">Ultra-creamy, baked to a golden crust. Feeds 10–12.</div>
+          <div class="price">$75</div>
+        </article>
+
+        <article class="card">
+          <div class="name">Sweet Maple Candy Yams</div>
+          <div class="desc">Caramelized with brown sugar and maple.</div>
+          <div class="price">$45 / $80</div>
+        </article>
+
+        <article class="card">
+          <div class="name">Cuban Black Bean Rice</div>
+          <div class="desc">Savory black beans over fluffy rice, Cuban style.</div>
+          <div class="price">$45 / $65</div>
+        </article>
+
+        <article class="card">
+          <div class="name">Haitian Djon Djon Rice</div>
+          <div class="desc">Fragrant black mushroom rice with deep umami.</div>
+          <div class="price">$45 / $65</div>
+        </article>
+
+        <article class="card">
+          <div class="name">Arroz con Gandules</div>
+          <div class="desc">Puerto Rican rice with pigeon peas, sofrito, sazón.</div>
+          <div class="price">$45 / $65</div>
+        </article>
+
+        <article class="card">
+          <div class="name">Puerto Rican Pasteles</div>
+          <div class="desc">Green-banana masa in banana leaf, savory pork stew.</div>
+          <div class="price">12 for $40</div>
+        </article>
+
+        <article class="card">
+          <div class="name">Colombian Empanadas</div>
+          <div class="desc">Golden turnovers with chicken or veggie &amp; house aioli.</div>
+          <div class="price">25 for $100 / 12 for $60</div>
+        </article>
+
+        <article class="card">
+          <div class="name">Puerto Rican Alcapurrias</div>
+          <div class="desc">Crisp green-banana fritters with spiced beef.</div>
+          <div class="price">25 for $100 / 12 for $60</div>
+        </article>
+
+        <article class="card">
+          <div class="name">Southern Cornbread</div>
+          <div class="desc">Buttery golden wedges with crisp edges.</div>
+          <div class="price">$35</div>
+        </article>
+      </div>
+    </section>
+  </div>
+</div>
+</body>
+</html>
