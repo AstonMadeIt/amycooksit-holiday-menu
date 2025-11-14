@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amy Cooks It – Holiday '25 Menu (Social)</title>
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream: #FFFBF5;
+  --ink: #1A1A1A;
+  --gold: #B8943D;
+  --green: #1F6F54;
+  --green-light: #E8F3EF;
+  --warm-gray: #6B6558;
+  --divider: rgba(107, 101, 88, 0.12);
+  --shadow-card: 0 8px 32px rgba(26, 20, 12, 0.08), 0 1px 4px rgba(26, 20, 12, 0.04);
+  --fall-orange: #C98A4A;
+  --fall-orange-deep: #A0662C;
+}
+
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;
+  font-size:18px;
+  background:
+    radial-gradient(circle at top center, rgba(201,138,74,0.18) 0%, transparent 55%),
+    linear-gradient(to bottom, #FFF8F0 0%, #FFF9F2 45%, #FFF4E8 100%);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.6;
+}
+
+/* Tighter frame so the screenshot has less dead space */
+.container{
+  max-width:1180px;
+  margin:28px auto 36px;
+  padding:20px 26px 34px;
+  background:transparent;
+}
+
+/* HERO: logo + text in a row (compact) */
+.hero{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:16px;
+  margin-bottom:18px;
+}
+
+.logo-wrapper{
+  flex-shrink:0;
+}
+
+.logo{
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  overflow:hidden;
+  background:#FFFFFF;
+  box-shadow:
+    0 12px 40px rgba(31, 111, 84, 0.15),
+    0 0 0 1px rgba(255,255,255,0.9),
+    inset 0 2px 4px rgba(0,0,0,0.03);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.logo img{
+  max-width:100%;
+  height:auto;
+  display:block;
+}
+
+.hero-text{
+  text-align:left;
+}
+
+.hero-text h1{
+  font-family:"Playfair Display","Times New Roman",serif;
+  font-size:28px;
+  font-weight:600;
+  letter-spacing:-0.01em;
+  margin:0 0 2px;
+  color:var(--ink);
+}
+
+.subtitle{
+  font-size:14px;
+  color:var(--warm-gray);
+  font-weight:400;
+  margin:0;
+  letter-spacing:0.02em;
+}
+
+.hero-subrow{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:baseline;
+  gap:8px;
+  margin-top:3px;
+}
+
+.hero-tagline{
+  font-family:"Playfair Display",serif;
+  font-size:16px;
+  font-weight:500;
+  color:var(--ink);
+  margin:0;
+}
+
+.hero-notice{
+  font-size:13px;
+  color:var(--warm-gray);
+  margin:0;
+}
+
+/* MAIN CONTENT GRID */
+.content-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:20px;
+}
+
+/* Section headers */
+.section-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  margin-bottom:10px;
+  padding-bottom:6px;
+  border-bottom:2px solid var(--divider);
+}
+
+.section-header h2{
+  font-family:"Playfair Display","Times New Roman",serif;
+  font-size:20px;
+  font-weight:600;
+  letter-spacing:-0.01em;
+  margin:0;
+  color:var(--ink);
+}
+
+.badge{
+  font-size:11px;
+  padding:5px 13px;
+  border-radius:999px;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  font-weight:600;
+  white-space:nowrap;
+}
+
+.badge.green{
+  background:var(--green-light);
+  color:var(--green);
+  border:1px solid rgba(31,111,84,0.2);
+}
+
+.badge.cranberry{
+  background:rgba(201,138,74,0.12);
+  color:var(--fall-orange-deep);
+  border:1px solid rgba(201,138,74,0.4);
+}
+
+/* Mains */
+.menu-item{
+  background:#fff;
+  border-radius:12px;
+  padding:16px 18px;
+  margin-bottom:9px;
+  box-shadow:var(--shadow-card);
+  border:1px solid rgba(0,0,0,0.04);
+}
+
+.menu-item:last-child{
+  margin-bottom:0;
+}
+
+.item-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-start;
+  margin-bottom:6px;
+  gap:16px;
+}
+
+.item-name{
+  font-family:"Playfair Display",serif;
+  font-size:19px;
+  font-weight:600;
+  color:var(--ink);
+  letter-spacing:-0.01em;
+  line-height:1.3;
+  flex:1;
+}
+
+.item-price{
+  font-size:18px;
+  font-weight:600;
+  color:var(--gold);
+  white-space:nowrap;
+  letter-spacing:-0.01em;
+}
+
+.item-description{
+  font-size:15px;
+  line-height:1.7;
+  color:var(--warm-gray);
+}
+
+/* Sides */
+.sides-grid{
+  display:grid;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+  gap:9px;
+}
+
+.side-item{
+  background:#fff;
+  border-radius:12px;
+  padding:13px 15px 14px;
+  box-shadow:var(--shadow-card);
+  border:1px solid rgba(0,0,0,0.04);
+}
+
+.side-name{
+  font-weight:600;
+  font-size:16px;
+  color:var(--ink);
+  margin-bottom:4px;
+  display:block;
+  letter-spacing:-0.01em;
+}
+
+.side-description{
+  font-size:14px;
+  line-height:1.6;
+  color:var(--warm-gray);
+  margin-bottom:6px;
+  display:block;
+}
+
+.side-price{
+  font-size:15px;
+  font-weight:600;
+  color:var(--gold);
+  display:block;
+  letter-spacing:-0.01em;
+}
+
+/* No footer / booking info on social card */
+footer{ display:none; }
+
+/* RESPONSIVE (if you share the link too) */
+@media (max-width:900px){
+  .container{
+    margin:20px auto 28px;
+    padding:18px 16px 28px;
+  }
+  .content-grid{
+    grid-template-columns:1fr;
+  }
+  .sides-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width:600px){
+  body{ font-size:18px; }
+  .hero{
+    flex-direction:row;
+    align-items:flex-start;
+  }
+  .hero-text h1{ font-size:24px; }
+  .section-header h2{ font-size:19px; }
+  .item-name{ font-size:18px; }
+  .item-price{ font-size:17px; }
+  .item-description{ font-size:15px; }
+  .side-name{ font-size:16px; }
+  .side-description{ font-size:14px; }
+  .side-price{ font-size:15px; }
+}
+</style>
+</head>
+<body>
+  <div class="container">
+    <!-- HERO (COMPACT ROW) -->
+    <header class="hero">
+      <div class="logo-wrapper">
+        <div class="logo">
+          <img src="AmyCooksItLogo.jpeg" alt="Amy Cooks It">
+        </div>
+      </div>
+      <div class="hero-text">
+        <h1>Holiday Menu 2025</h1>
+        <p class="subtitle">Authentic Latin &amp; American Flavors • Brooklyn &amp; Greater NYC</p>
+        <div class="hero-subrow">
+          <p class="hero-tagline">From Our Kitchen to Your Table</p>
+          <p class="hero-notice">• 72 hour notice required</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <div class="content-grid">
+      <!-- MAINS -->
+      <section>
+        <div class="section-header">
+          <h2>Mains &amp; Centerpieces</h2>
+          <span class="badge green">Show Stoppers</span>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-header">
+            <h3 class="item-name">Honey Jerk Salmon</h3>
+            <div class="item-price">$90 / $175</div>
+          </div>
+          <p class="item-description">
+            Glazed with honey–citrus jerk, holiday orange &amp; clove.
+            Small feeds 6–8, large 10–15.
+          </p>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-header">
+            <h3 class="item-name">Mojo Cuban Pernil</h3>
+            <div class="item-price">$75</div>
+          </div>
+          <p class="item-description">
+            Slow-roasted pork shoulder in garlic-citrus mojo. Feeds 10–12.
+          </p>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-header">
+            <h3 class="item-name">Filipino Tocino Ham</h3>
+            <div class="item-price">$90</div>
+          </div>
+          <p class="item-description">
+            Cured, spiced holiday ham with cloves &amp; star anise,
+            smoked, glazed, browned. Feeds 10–15.
+          </p>
+        </div>
+
+        <div class="menu-item">
+          <div class="item-header">
+            <h3 class="item-name">Haitian Griot</h3>
+            <div class="item-price">$55 / $100</div>
+          </div>
+          <p class="item-description">
+            Crispy marinated pork bites with citrus and Scotch bonnet heat.
+            Small 6–8, large 10–15.
+          </p>
+        </div>
+      </section>
+
+      <!-- SIDES -->
+      <section>
+        <div class="section-header">
+          <h2>Sides &amp; Accompaniments</h2>
+          <span class="badge cranberry">Soulful Sides</span>
+        </div>
+
+        <div class="sides-grid">
+          <div class="side-item">
+            <span class="side-name">Smoked Turkey Collard Greens</span>
+            <span class="side-description">
+              Southern soul, slow-cooked with smoked turkey. Feeds 8–10.
+            </span>
+            <span class="side-price">$60</span>
+          </div>
+
+          <div class="side-item">
+            <span class="side-name">Four Cheese Mac and Cheese</span>
+            <span class="side-description">
+              Ultra-creamy, baked to a golden crust. Feeds 10–12.
+            </span>
+            <span class="side-price">$75</span>
+          </div>
+
+          <div class="side-item">
+            <span class="side-name">Sweet Maple Candy Yams</span>
+            <span class="side-description">
+              Caramelized with brown sugar and maple.
+            </span>
+            <span class="side-price">$45 / $80</span>
+          </div>
+
+          <div class="side-item">
+            <span class="side-name">Cuban Black Bean Rice</span>
+            <span class="side-description">
+              Savory black beans over fluffy rice, Cuban style.
+            </span>
+            <span class="side-price">$45 / $65</span>
+          </div>
+
+          <div class="side-item">
+            <span class="side-name">Haitian Djon Djon Rice</span>
+            <span class="side-description">
+              Fragrant black mushroom rice with deep umami.
+            </span>
+            <span class="side-price">$45 / $65</span>
+          </div>
+
+          <div class="side-item">
+            <span class="side-name">Arroz con Gandules</span>
+            <span class="side-description">
+              Puerto Rican rice with pigeon peas, sofrito, sazón.
+            </span>
+            <span class="side-price">$45 / $65</span>
+          </div>
+
+          <div class="side-item">
+            <span class="side-name">Puerto Rican Pasteles</span>
+            <span class="side-description">
+              Green-banana masa in banana leaf, savory pork stew.
+            </span>
+            <span class="side-price">12 for $40</span>
+          </div>
+
+          <div class="side-item">
+            <span class="side-name">Colombian Empanadas</span>
+            <span class="side-description">
+              Golden turnovers with chicken or veggie &amp; house aioli.
+            </span>
+            <span class="side-price">25 for $100 / 12 for $60</span>
+          </div>
+
+          <div class="side-item">
+            <span class="side-name">Puerto Rican Alcapurrias</span>
+            <span class="side-description">
+              Crisp green-banana fritters with spiced beef.
+            </span>
+            <span class="side-price">25 for $100 / 12 for $60</span>
+          </div>
+
+          <div class="side-item">
+            <span class="side-name">Southern Cornbread</span>
+            <span class="side-description">
+              Buttery golden wedges with crisp edges.
+            </span>
+            <span class="side-price">$35</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</body>
+</html>
