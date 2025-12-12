@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amy Cooks It — Christmas Catering Menu (NYC Pricing)</title>
+<link rel="icon" href="favicon.png" type="image/png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --cream: #FFF9F1;
+  --ink: #151515;
+  --gold: #C7A449;
+  --green: #1F6F54;
+  --cranberry: #7A1F2B;
+  --soft-gold: #E6D6A8;
+  --paper: #FFFEFB;
+  --line: #EADFBE;
+  --shadow: 0 24px 60px rgba(140, 100, 28, 0.15), 0 2px 0 rgba(255,255,255,0.6) inset;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: linear-gradient(180deg, #fffaf4 0%, #fff5ea 40%, #f7ebd7 100%);
+  color: var(--ink);
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  padding: clamp(12px, 3vw, 28px);
+}
+
+.container {
+  max-width: 1180px;
+  margin: 0 auto;
+  background: var(--paper);
+  border-radius: 20px;
+  border: 1px solid rgba(199, 164, 73, 0.25);
+  box-shadow: var(--shadow);
+  overflow: visible;
+  position: relative;
+}
+
+/* ===== STICKY HEADER ===== */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(135deg, #FFF9F1 0%, #FFFEFB 100%);
+  border-bottom: 1px solid var(--line);
+  padding: clamp(14px, 3vw, 22px);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 2px 12px rgba(140, 100, 28, 0.15);
+  border-radius: 20px 20px 0 0;
+}
+
+.header-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: clamp(10px, 2.5vw, 16px);
+  min-width: 0;
+}
+
+.logo {
+  width: clamp(54px, 9vw, 70px);
+  height: clamp(54px, 9vw, 70px);
+  border-radius: 50%;
+  border: 2.5px solid var(--gold);
+  overflow: hidden;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.75), 0 6px 16px rgba(140, 100, 28, 0.18);
+  background: white;
+  flex-shrink: 0;
+}
+.logo img { width: 100%; height: 100%; object-fit: cover; }
+
+h1 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(22px, 4.2vw, 36px);
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  line-height: 1.05;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: min(700px, 62vw);
+}
+
+.tagline {
+  color: #525762;
+  font-size: clamp(11px, 2.4vw, 13px);
+  font-weight: 500;
+  margin-top: 6px;
+  letter-spacing: 0.2px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(199,164,73,.35);
+  background: linear-gradient(180deg, #fff, #faf5e9);
+  box-shadow: 0 1px 0 #fff inset, 0 4px 12px rgba(0,0,0,0.06);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.chip .dot { width: 8px; height: 8px; border-radius: 999px; background: var(--gold); box-shadow: 0 0 0 4px rgba(199,164,73,.18); }
+.chip.primary {
+  border-color: rgba(31,111,84,.25);
+  background: linear-gradient(135deg, rgba(31,111,84,.12), rgba(31,111,84,.06));
+}
+
+.hero-tagline {
+  text-align: right;
+  margin-top: 10px;
+}
+.hero-tagline .line1 {
+  font-size: clamp(11px, 2.4vw, 14px);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  background: linear-gradient(135deg, #C7A449, #8C641C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-tagline .line2 {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(9px, 2vw, 11px);
+  font-weight: 500;
+  color: #666d79;
+  letter-spacing: 0.7px;
+  font-style: italic;
+  margin-top: 2px;
+}
+
+/* CTA BAR */
+.cta-bar {
+  margin-top: 12px;
+  background: linear-gradient(135deg, #1F6F54 0%, #2A8A6B 50%, #1F6F54 100%);
+  background-size: 200% 100%;
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px clamp(14px, 3vw, 18px);
+  box-shadow: 0 4px 16px rgba(31, 111, 84, 0.3), 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+  animation: shimmer 3s ease-in-out infinite;
+  border: 1px solid rgba(255,255,255,.10);
+}
+@keyframes shimmer { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+.cta-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 500;
+}
+.cta-content strong{
+  background: linear-gradient(135deg, #FFF9F1, #E6D6A8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.2px;
+}
+.cta-divider { opacity: .45; }
+
+/* ===== CONTENT ===== */
+.content {
+  padding: clamp(16px, 4vw, 30px);
+}
+
+.subhead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.subhead p{
+  color: #666d79;
+  font-size: 14px;
+  line-height: 1.45;
+  max-width: 760px;
+}
+.badges {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.badge {
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+  border: 1px solid rgba(199,164,73,.25);
+  background: linear-gradient(135deg, #E6D6A8, #C7A449);
+  color: #1f1a10;
+}
+
+/* Desktop columns */
+.columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(14px, 2.2vw, 18px);
+  align-items: start;
+}
+
+/* Card / Panel */
+.panel {
+  background: linear-gradient(180deg, #ffffff, #faf5e9);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: 0 1px 0 #fff inset, 0 4px 12px rgba(0,0,0,0.06);
+  overflow: hidden;
+  position: relative;
+}
+
+.panel-header {
+  position: sticky; /* sticks inside column scroll on desktop */
+  top: 0;
+  z-index: 2;
+  background: linear-gradient(135deg, rgba(255,249,241,.96), rgba(255,254,251,.96));
+  border-bottom: 1px solid rgba(199,164,73,.18);
+  padding: 14px 14px 12px;
+  backdrop-filter: blur(8px);
+}
+
+.panel-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.star {
+  width: 28px; height: 28px; border-radius: 10px;
+  display: grid; place-items: center;
+  border: 1px solid rgba(199,164,73,.28);
+  background: linear-gradient(135deg, rgba(199,164,73,.14), rgba(230,214,168,.10));
+  color: #8C641C;
+  font-weight: 900;
+}
+.panel-title h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+.panel-sub {
+  margin-top: 6px;
+  color: #666d79;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.panel-body {
+  padding: 10px 12px 14px;
+}
+
+/* Menu rows */
+.item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(199,164,73,0.12);
+}
+.item:last-child { border-bottom: none; }
+
+.name {
+  font-weight: 800;
+  color: var(--ink);
+  letter-spacing: 0.15px;
+  font-size: 14px;
+  line-height: 1.25;
+}
+.note {
+  margin-top: 4px;
+  color: #666d79;
+  font-size: 12px;
+  line-height: 1.25;
+  font-weight: 500;
+}
+
+.pricebox {
+  text-align: right;
+  min-width: 140px;
+}
+.price {
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: .2px;
+  color: var(--ink);
+}
+.label {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  color: #666d79;
+  font-weight: 700;
+}
+
+/* Premium tag */
+.premium {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .6px;
+  text-transform: uppercase;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #7A1F2B, #5e1721);
+  border: 1px solid rgba(122,31,43,.25);
+}
+
+/* Mobile: accordion to reduce scrolling */
+details.accordion { display: none; }
+
+.ordering {
+  margin-top: 18px;
+  background: linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.82));
+  border: 1px solid rgba(199,155,50,0.25);
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 12px 24px rgba(17, 17, 22, 0.08);
+}
+.ordering h3 {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.ordering ul { list-style: none; }
+.ordering li{
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(199,164,73,0.12);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.ordering li:last-child { border-bottom: none; }
+.ordering strong{ font-weight: 900; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 980px){
+  .columns{ grid-template-columns: 1fr; }
+  .header-top{ flex-wrap: wrap; }
+  .hero-tagline{ text-align: left; }
+  .badges{ justify-content: flex-start; }
+}
+
+@media (max-width: 640px){
+  body { padding: 10px; }
+  .container { border-radius: 16px; }
+  .header { padding: 14px 12px; border-radius: 16px 16px 0 0; }
+  h1{ font-size: 22px; max-width: 90vw; }
+  .tagline{ font-size: 10px; }
+  .header-actions{ width: 100%; justify-content: flex-start; }
+  .hero-tagline{ text-align: center; }
+  .cta-content{ flex-direction: column; text-align: center; }
+  .cta-divider{ display: none; }
+
+  /* On mobile: hide desktop columns, show accordions */
+  .columns{ display: none; }
+  details.accordion{ display: block; margin-bottom: 12px; }
+
+  details.accordion summary{
+    list-style: none;
+    cursor: pointer;
+    padding: 14px 14px 12px;
+    background: linear-gradient(180deg, #ffffff, #faf5e9);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    box-shadow: 0 1px 0 #fff inset, 0 4px 12px rgba(0,0,0,0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    -webkit-tap-highlight-color: transparent;
+  }
+  details.accordion summary::-webkit-details-marker{ display:none; }
+
+  .sum-left{ display:flex; align-items:center; gap:10px; }
+  .chev{ color:#666d79; font-weight: 900; }
+  details[open] .chev{ transform: rotate(180deg); }
+
+  .accordion-body{
+    margin-top: 10px;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .pricebox{ min-width: 120px; }
+}
+</style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- HEADER -->
+    <header class="header" id="top">
+      <div class="header-top">
+        <div class="brand">
+          <div class="logo">
+            <img src="AmyCooksItLogo.jpeg" alt="Amy Cooks It Logo">
+          </div>
+          <div>
+            <h1>Christmas Catering Menu</h1>
+            <p class="tagline">Brooklyn & Greater NYC • 72 Hour Notice For Orders</p>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <a class="chip primary" href="#menu"><span class="dot"></span>Menu</a>
+          <a class="chip" href="#order">How to Order</a>
+          <a class="chip" href="#top" title="Back to top">↑</a>
+        </div>
+      </div>
+
+      <div class="hero-tagline">
+        <div class="line1">Authentic Latin & American Flavors</div>
+        <div class="line2">From Our Kitchen to Your Table</div>
+      </div>
+
+      <div class="cta-bar">
+        <div class="cta-content">
+          <span>Limited Holiday Availability</span>
+          <span class="cta-divider">•</span>
+          <span><strong>Text 347-420-8728</strong></span>
+          <span class="cta-divider">•</span>
+          <span style="opacity:.9;font-size:11px;">Square Invoicing & Payments</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- CONTENT -->
+    <main class="content" id="menu">
+      <div class="subhead">
+        <p><em>Fit for families, offices, and small parties.</em> NYC/Tri-State pricing includes a subtle 5–10% seasonal lift while staying competitive with premier caterers.</p>
+        <div class="badges">
+          <span class="badge">Half feeds ~8–10</span>
+          <span class="badge">Full feeds ~16–20</span>
+        </div>
+      </div>
+
+      <!-- MOBILE ACCORDIONS -->
+      <details class="accordion" open>
+        <summary>
+          <div class="sum-left">
+            <div class="star">★</div>
+            <div>
+              <div style="font-weight:900;letter-spacing:.2px;">Appetizer Trays</div>
+              <div style="color:#666d79;font-size:12px;font-weight:600;margin-top:2px;">Half / Full (plus sliders + taquitos)</div>
+            </div>
+          </div>
+          <div class="chev">⌄</div>
+        </summary>
+        <div class="accordion-body panel">
+          <div class="panel-body">
+            <!-- Appetizers -->
+            <div class="item">
+              <div>
+                <div class="name">Jerk Honey BBQ Wings</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$85</div><span class="label">Half Tray</span>
+                <div class="price">$155</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="name">Lemon Pepper Wings</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$80</div><span class="label">Half Tray</span>
+                <div class="price">$145</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="name">Empanadas</div>
+                <div class="note">Beef • Chicken • Guava &amp; Cheese</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$75</div><span class="label">Half (18–20)</span>
+                <div class="price">$140</div><span class="label">Full (36–40)</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="name">Coconut Shrimp</div>
+                <div class="note">w/ Pineapple Chili Sauce</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$95</div><span class="label">Half Tray</span>
+                <div class="price">$175</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="name">Pernil Sliders Tray</div>
+                <div class="note">12 or 24 count</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$72</div><span class="label">12 Count</span>
+                <div class="price">$135</div><span class="label">24 Count</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="name">Chicken Tinga Taquitos</div>
+                <div class="note">25 count (full = 50 count)</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$78</div><span class="label">25 Count</span>
+                <div class="price">$145</div><span class="label">50 Count</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="name">Spinach &amp; Artichoke Dip</div>
+                <div class="note">w/ Plantain Chips</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$65</div><span class="label">Half Tray</span>
+                <div class="price">$115</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="accordion">
+        <summary>
+          <div class="sum-left">
+            <div class="star">★</div>
+            <div>
+              <div style="font-weight:900;letter-spacing:.2px;">Protein Trays</div>
+              <div style="color:#666d79;font-size:12px;font-weight:600;margin-top:2px;">Premium anchors included</div>
+            </div>
+          </div>
+          <div class="chev">⌄</div>
+        </summary>
+        <div class="accordion-body panel">
+          <div class="panel-body">
+            <div class="item">
+              <div><div class="name">Pernil — Slow Roasted</div></div>
+              <div class="pricebox">
+                <div class="price">$110</div><span class="label">Half Tray</span>
+                <div class="price">$195</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="name">Brown Sugar Rum Glazed Salmon</div>
+                <div class="note">Holiday favorite</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$135</div><span class="label">Half Tray</span>
+                <div class="price">$255</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div><div class="name">Mojo Turkey Breast</div></div>
+              <div class="pricebox">
+                <div class="price">$105</div><span class="label">Half Tray</span>
+                <div class="price">$185</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div><div class="name">Bourbon BBQ Meatballs</div></div>
+              <div class="pricebox">
+                <div class="price">$85</div><span class="label">Half Tray</span>
+                <div class="price">$155</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div><div class="name">Dominican Pollo Guisado</div></div>
+              <div class="pricebox">
+                <div class="price">$95</div><span class="label">Half Tray</span>
+                <div class="price">$175</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="name">Braised Oxtail</div>
+                <div class="premium">Premium</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$165</div><span class="label">Half Tray</span>
+                <div class="price">$315</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="accordion">
+        <summary>
+          <div class="sum-left">
+            <div class="star">★</div>
+            <div>
+              <div style="font-weight:900;letter-spacing:.2px;">Rice &amp; Sides</div>
+              <div style="color:#666d79;font-size:12px;font-weight:600;margin-top:2px;">Half / Full trays</div>
+            </div>
+          </div>
+          <div class="chev">⌄</div>
+        </summary>
+        <div class="accordion-body panel">
+          <div class="panel-body">
+            <div class="item">
+              <div><div class="name">Arroz con Gandules</div></div>
+              <div class="pricebox">
+                <div class="price">$55</div><span class="label">Half Tray</span>
+                <div class="price">$95</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div><div class="name">White Rice w/ Beans</div></div>
+              <div class="pricebox">
+                <div class="price">$50</div><span class="label">Half Tray</span>
+                <div class="price">$90</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="name">Mac &amp; Cheese</div>
+                <div class="note">4-Cheese baked</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$65</div><span class="label">Half Tray</span>
+                <div class="price">$115</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div><div class="name">Yuca al Mojo</div></div>
+              <div class="pricebox">
+                <div class="price">$55</div><span class="label">Half Tray</span>
+                <div class="price">$95</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div><div class="name">Roasted Herb Potatoes</div></div>
+              <div class="pricebox">
+                <div class="price">$55</div><span class="label">Half Tray</span>
+                <div class="price">$95</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div><div class="name">Pastelón (Plantain Lasagna)</div></div>
+              <div class="pricebox">
+                <div class="price">$75</div><span class="label">Half Tray</span>
+                <div class="price">$135</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div><div class="name">Sweet Plantains</div></div>
+              <div class="pricebox">
+                <div class="price">$55</div><span class="label">Half Tray</span>
+                <div class="price">$95</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="name">Southern Green Beans</div>
+                <div class="note">Smoked turkey</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$55</div><span class="label">Half Tray</span>
+                <div class="price">$95</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <!-- DESKTOP 3-COLUMN VIEW -->
+      <section class="columns" aria-label="Desktop Columns View">
+        <!-- Appetizers -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <div class="star">★</div>
+              <h2>Appetizer Trays</h2>
+            </div>
+            <div class="panel-sub">Half / Full • NYC holiday pricing</div>
+          </div>
+          <div class="panel-body">
+            <div class="item">
+              <div><div class="name">Jerk Honey BBQ Wings</div></div>
+              <div class="pricebox">
+                <div class="price">$85</div><span class="label">Half Tray</span>
+                <div class="price">$155</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div><div class="name">Lemon Pepper Wings</div></div>
+              <div class="pricebox">
+                <div class="price">$80</div><span class="label">Half Tray</span>
+                <div class="price">$145</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="name">Empanadas</div>
+                <div class="note">Beef • Chicken • Guava &amp; Cheese</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$75</div><span class="label">Half (18–20)</span>
+                <div class="price">$140</div><span class="label">Full (36–40)</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="name">Coconut Shrimp</div>
+                <div class="note">w/ Pineapple Chili Sauce</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$95</div><span class="label">Half Tray</span>
+                <div class="price">$175</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="name">Pernil Sliders Tray</div>
+                <div class="note">12 or 24 count</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$72</div><span class="label">12 Count</span>
+                <div class="price">$135</div><span class="label">24 Count</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="name">Chicken Tinga Taquitos</div>
+                <div class="note">25 count (full = 50)</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$78</div><span class="label">25 Count</span>
+                <div class="price">$145</div><span class="label">50 Count</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="name">Spinach &amp; Artichoke Dip</div>
+                <div class="note">w/ Plantain Chips</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$65</div><span class="label">Half Tray</span>
+                <div class="price">$115</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proteins -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <div class="star">★</div>
+              <h2>Protein Trays</h2>
+            </div>
+            <div class="panel-sub">Half / Full • Premium options available</div>
+          </div>
+          <div class="panel-body">
+            <div class="item">
+              <div><div class="name">Pernil — Slow Roasted</div></div>
+              <div class="pricebox">
+                <div class="price">$110</div><span class="label">Half Tray</span>
+                <div class="price">$195</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="name">Brown Sugar Rum Glazed Salmon</div>
+                <div class="note">Holiday favorite</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$135</div><span class="label">Half Tray</span>
+                <div class="price">$255</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div><div class="name">Mojo Turkey Breast</div></div>
+              <div class="pricebox">
+                <div class="price">$105</div><span class="label">Half Tray</span>
+                <div class="price">$185</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div><div class="name">Bourbon BBQ Meatballs</div></div>
+              <div class="pricebox">
+                <div class="price">$85</div><span class="label">Half Tray</span>
+                <div class="price">$155</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div><div class="name">Dominican Pollo Guisado</div></div>
+              <div class="pricebox">
+                <div class="price">$95</div><span class="label">Half Tray</span>
+                <div class="price">$175</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="name">Braised Oxtail</div>
+                <div class="premium">Premium</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$165</div><span class="label">Half Tray</span>
+                <div class="price">$315</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Sides -->
+        <div class="panel">
+          <div class="panel-header">
+            <div class="panel-title">
+              <div class="star">★</div>
+              <h2>Rice &amp; Sides</h2>
+            </div>
+            <div class="panel-sub">Half / Full trays</div>
+          </div>
+          <div class="panel-body">
+            <div class="item">
+              <div><div class="name">Arroz con Gandules</div></div>
+              <div class="pricebox">
+                <div class="price">$55</div><span class="label">Half Tray</span>
+                <div class="price">$95</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div><div class="name">White Rice w/ Beans</div></div>
+              <div class="pricebox">
+                <div class="price">$50</div><span class="label">Half Tray</span>
+                <div class="price">$90</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="name">Mac &amp; Cheese</div>
+                <div class="note">4-Cheese baked</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$65</div><span class="label">Half Tray</span>
+                <div class="price">$115</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div><div class="name">Yuca al Mojo</div></div>
+              <div class="pricebox">
+                <div class="price">$55</div><span class="label">Half Tray</span>
+                <div class="price">$95</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div><div class="name">Roasted Herb Potatoes</div></div>
+              <div class="pricebox">
+                <div class="price">$55</div><span class="label">Half Tray</span>
+                <div class="price">$95</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div><div class="name">Pastelón (Plantain Lasagna)</div></div>
+              <div class="pricebox">
+                <div class="price">$75</div><span class="label">Half Tray</span>
+                <div class="price">$135</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div><div class="name">Sweet Plantains</div></div>
+              <div class="pricebox">
+                <div class="price">$55</div><span class="label">Half Tray</span>
+                <div class="price">$95</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+
+            <div class="item">
+              <div>
+                <div class="name">Southern Green Beans</div>
+                <div class="note">Smoked turkey</div>
+              </div>
+              <div class="pricebox">
+                <div class="price">$55</div><span class="label">Half Tray</span>
+                <div class="price">$95</div><span class="label">Full Tray</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ORDERING -->
+      <section class="ordering" id="order">
+        <h3>How to Order</h3>
+        <ul>
+          <li><strong>Text:</strong> 347-420-8728 with your selections + quantities (Half/Full), preferred date/time, and neighborhood/ZIP.</li>
+          <li><strong>Lead time:</strong> 72-hour notice recommended. Limited holiday availability.</li>
+          <li><strong>Payment:</strong> Square invoicing &amp; payments.</li>
+          <li><strong>Tray sizes:</strong> Half feeds ~8–10 • Full feeds ~16–20 (varies by item).</li>
+        </ul>
+      </section>
+
+    </main>
+  </div>
+</body>
+</html>v
