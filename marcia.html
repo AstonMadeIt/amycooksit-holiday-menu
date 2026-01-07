@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Amy Cooks It — Catering Proposal</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --gold:#C79B32;
+  --gold-soft:#F3D98B;
+  --ink:#121417;
+  --muted:#6b7280;
+}
+
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto;
+  background:linear-gradient(180deg,#fffaf4,#f7ebd7);
+  color:var(--ink);
+}
+
+.wrap{max-width:1100px;margin:auto;padding:28px}
+
+.header{
+  border:3px solid var(--gold);
+  border-radius:24px;
+  padding:24px;
+  background:
+    radial-gradient(900px 380px at 80% -10%, rgba(243,217,139,.28), transparent 60%),
+    linear-gradient(135deg,#fff,#fff8eb);
+  box-shadow:0 24px 60px rgba(0,0,0,.18);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+
+.logo{
+  width:72px;
+  height:72px;
+  border-radius:50%;
+  overflow:hidden;
+  border:3px solid var(--gold);
+  background:#fff;
+  box-shadow:0 4px 10px rgba(0,0,0,.2);
+}
+
+.logo img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+h1{
+  font-family:"Playfair Display",serif;
+  font-size:44px;
+  margin:0;
+}
+
+.info{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:16px;
+  margin-top:18px;
+}
+
+.card{
+  background:#fff;
+  border-radius:16px;
+  padding:16px;
+  border:1px solid rgba(0,0,0,.08);
+  box-shadow:0 14px 30px rgba(0,0,0,.12);
+}
+
+.card h3{
+  margin:0 0 6px;
+  font-size:15px;
+  font-weight:700;
+}
+
+.card p{
+  margin:0;
+  font-size:14px;
+  color:var(--muted);
+  line-height:1.45;
+}
+
+.pricing{
+  margin-top:14px;
+  font-size:14px;
+  color:#111;
+}
+
+.pricing b{font-weight:700}
+
+.grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+  margin-top:22px;
+}
+
+.section{
+  border:2px solid var(--gold);
+  border-radius:20px;
+  padding:18px;
+  background:#fff;
+  box-shadow:0 18px 40px rgba(0,0,0,.12);
+}
+
+.section-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.section-header h2{
+  font-family:"Playfair Display",serif;
+  font-size:24px;
+  margin:0;
+}
+
+.badge{
+  background:linear-gradient(180deg,var(--gold-soft),var(--gold));
+  padding:6px 12px;
+  border-radius:999px;
+  font-size:12px;
+  font-weight:500;
+}
+
+ul{
+  list-style:none;
+  padding:0;
+  margin:14px 0 0;
+}
+
+li{
+  padding:12px 14px;
+  margin-bottom:10px;
+  background:linear-gradient(180deg,#fff,#faf5e9);
+  border-radius:12px;
+  border:1px solid rgba(0,0,0,.08);
+}
+
+li b{font-weight:700}
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<header class="header">
+  <div class="brand">
+    <div class="logo">
+      <img src="AmyCooksItLogo.jpeg" alt="Amy Cooks It Logo">
+    </div>
+    <h1>AMY COOKS IT</h1>
+  </div>
+
+  <div class="info">
+    <div class="card">
+      <h3>Event</h3>
+      <p>
+        Engagement Party • January 18th<br>
+        Crystal Lake • Brooklyn, NY<br>
+        Client: Marcia • (914) 471-5350<br>
+        Time: TBD • Serving Size: 36–40 ppl
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Service</h3>
+      <p>
+        Drop-Off or Full Service Catering<br>
+        50% Due at Booking • Balance Due 72 Hrs Before Event<br>
+        Chafing Dishes • Warmers • On-site Frying • Delivery & Gratuity Included
+      </p>
+
+      <div class="pricing">
+        <b>Drop-Off Catering:</b> $1,700<br>
+        <b>Full Service Catering:</b> $2,200
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="grid">
+
+  <!-- MAIN COURSES (LEFT) -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Main Courses</h2>
+      <span class="badge">Served hot</span>
+    </div>
+    <ul>
+      <li><b>Mojo Pernil</b> — Slow-roasted pork with citrus-garlic mojo</li>
+      <li><b>Peruvian Chicken</b> — Roasted with Aji Verde</li>
+      <li><b>Puerto Rican Pastelón</b></li>
+      <li><b>Yuca con Mojo</b> — Vegetarian</li>
+      <li><b>Arroz con Gandules</b></li>
+      <li><b>Sweet Plantains</b></li>
+    </ul>
+  </section>
+
+  <!-- BITES & SALAD (RIGHT) -->
+  <section class="section">
+    <div class="section-header">
+      <h2>Bites & Salad</h2>
+      <span class="badge">Hand-held • Cocktail-friendly</span>
+    </div>
+    <ul>
+      <li><b>Alcapurrias</b> — 50 pcs (Gluten Free)</li>
+      <li><b>Colombian Empanadas</b> — 50 pcs (Gluten Free • Veg options)</li>
+      <li><b>Colombian Salad</b></li>
+    </ul>
+  </section>
+
+</main>
+</div>
+</body>
+</html>
